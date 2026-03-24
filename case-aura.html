@@ -4,180 +4,214 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aura E-Commerce App — JD Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f0ede6; --text: #2c2c2a; --text-muted: #7a7a72; --text-light: #adadA0;
-    --accent: #697c80; --border: #d8d4cc;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Jost', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
-
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; background: rgba(240,237,230,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; font-weight: 400; color: var(--text); text-decoration: none; }
-  .nav-back { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: opacity .2s; }
-  .nav-back:hover { opacity: 0.5; }
-
-  .case-hero { padding: 140px 48px 80px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
-  .case-category { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
-  .case-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -0.01em; margin-bottom: 28px; }
-  .case-desc { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); max-width: 440px; }
-  .meta-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
-  .meta-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
-  .meta-value { font-size: 0.78rem; font-weight: 400; color: var(--text); }
-  .case-hero-right { display: flex; flex-direction: column; gap: 20px; }
-
-  .case-mockup { width: 100%; background: var(--accent); min-height: 480px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .phone-frame { width: 200px; height: 380px; background: rgba(255,255,255,0.12); border-radius: 24px; padding: 20px 16px; display: flex; flex-direction: column; gap: 12px; }
-  .phone-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.25); }
-  .phone-title { height: 12px; background: rgba(255,255,255,0.35); border-radius: 2px; width: 70%; }
-  .phone-sub { height: 8px; background: rgba(255,255,255,0.2); border-radius: 2px; width: 50%; }
-  .phone-img { flex: 1; background: rgba(255,255,255,0.18); border-radius: 8px; }
-
-  .content-section { max-width: 900px; margin: 0 auto; padding: 70px 48px; }
-  .content-section + .content-section { border-top: 1px solid var(--border); }
-  .content-eyebrow { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
-  .content-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; margin-bottom: 24px; }
-  .content-body { font-size: 0.85rem; line-height: 1.9; color: var(--text-muted); }
-  .content-body p + p { margin-top: 16px; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .insight-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
-  .insight-card { border: 1px solid var(--border); padding: 24px 20px; border-radius: 3px; }
-  .insight-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text); display: block; margin-bottom: 8px; }
-  .insight-label { font-size: 0.72rem; line-height: 1.6; color: var(--text-muted); }
-  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .tag { padding: 7px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
-
-  .next-project { border-top: 1px solid var(--border); padding: 60px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; }
-  .next-label { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-  .next-title { font-family: var(--font-display); font-size: 2rem; font-weight: 300; }
-  .next-link { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; border: 1px solid var(--text); padding: 10px 22px; border-radius: 100px; transition: background .2s, color .2s; }
-  .next-link:hover { background: var(--text); color: var(--bg); }
-
-  footer { border-top: 1px solid var(--border); padding: 22px 48px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
-  .footer-copy { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); text-decoration: none; }
-
-  @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .case-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
-    .content-section { padding: 50px 24px; }
-    .two-col { grid-template-columns: 1fr; }
-    .insight-grid { grid-template-columns: 1fr 1fr; }
-    .next-project { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
-    footer { flex-direction: column; gap: 14px; padding: 20px 24px; text-align: center; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
+
+<nav class="site-nav">
   <a href="index.html" class="nav-logo">jd.</a>
-  <a href="index.html#work" class="nav-back">← Back to Work</a>
+  <a href="index.html#work" class="nav-back">Back to Portfolio</a>
 </nav>
 
-<div class="case-hero">
-  <div class="case-hero-left">
-    <p class="case-category">Product Design &nbsp;·&nbsp; Mobile &nbsp;·&nbsp; 2022</p>
-    <h1 class="case-title">Aura E-Commerce App</h1>
-    <p class="case-desc">Rethinking the mobile shopping experience for a curated lifestyle brand, resulting in a 40% lift in conversion within the first month of launch.</p>
+<header class="cs-hero">
+  <div class="cs-hero-meta">
+    <span class="cs-category">Product Design</span>
+    <span class="cs-meta-dot">·</span>
+    <span class="cs-category">Mobile</span>
+    <span class="cs-meta-dot">·</span>
+    <span class="cs-category">2022</span>
   </div>
-  <div class="case-hero-right">
-    <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">Senior Product Designer</span></div>
-    <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-value">6 Months</span></div>
-    <div class="meta-row"><span class="meta-label">Platform</span><span class="meta-value">iOS & Android</span></div>
-    <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Figma, Principle, Hotjar, FullStory</span></div>
-    <div class="meta-row" style="border:none;padding:0"><span class="meta-label">Outcome</span><span class="meta-value" style="color:#5a6b52;font-weight:500">+40% conversion rate</span></div>
+  <h1 class="cs-title">Aura<br>E-Commerce App</h1>
+  <p class="prose" style="max-width:600px;margin-bottom:0">Rethinking the mobile shopping experience for a curated lifestyle brand, resulting in a 40% lift in conversion within the first month of launch.</p>
+  <div class="cs-summary-grid">
+    <div class="cs-summary-cell"><span class="cs-summary-label">System Architecture</span><span class="cs-summary-value">Progressive Preference Model V1.0</span></div>
+    <div class="cs-summary-cell"><span class="cs-summary-label">Typical Duration</span><span class="cs-summary-value">6 Months End-to-End</span></div>
+    <div class="cs-summary-cell"><span class="cs-summary-label">Role</span><span class="cs-summary-value">Senior Product Designer</span></div>
+    <div class="cs-summary-cell"><span class="cs-summary-label">Outcome</span><span class="cs-summary-value accent">+40% conversion rate</span></div>
+  </div>
+</header>
+
+<div class="cs-banner cs-banner-aura" aria-hidden="true">
+  <div style="width:180px;background:rgba(255,255,255,0.1);border-radius:20px;padding:20px 16px;display:flex;flex-direction:column;gap:10px;">
+    <div style="display:flex;align-items:center;gap:10px;"><div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.25);flex-shrink:0;"></div><div style="flex:1;display:flex;flex-direction:column;gap:5px;"><div style="height:9px;background:rgba(255,255,255,0.35);border-radius:2px;"></div><div style="height:7px;width:70%;background:rgba(255,255,255,0.2);border-radius:2px;"></div></div></div>
+    <div style="flex:1;min-height:100px;background:rgba(255,255,255,0.2);border-radius:8px;"></div>
+    <div style="height:9px;background:rgba(255,255,255,0.3);border-radius:2px;"></div>
+    <div style="height:7px;width:60%;background:rgba(255,255,255,0.2);border-radius:2px;"></div>
   </div>
 </div>
 
-<div class="case-mockup">
-  <div class="phone-frame">
-    <div style="display:flex;gap:10px;align-items:center"><div class="phone-circle"></div><div style="display:flex;flex-direction:column;gap:6px;flex:1"><div class="phone-title"></div><div class="phone-sub"></div></div></div>
-    <div class="phone-img"></div>
-    <div class="phone-title" style="width:85%"></div>
-    <div class="phone-sub"></div>
-  </div>
+<div class="cs-body">
+
+  <nav class="cs-toc" aria-label="Page sections">
+    <a href="#s-discovery"    class="cs-toc-item active" data-section="s-discovery"><span class="cs-toc-num">01</span><span class="cs-toc-label">Discovery</span></a>
+    <a href="#s-architecture" class="cs-toc-item" data-section="s-architecture"><span class="cs-toc-num">02</span><span class="cs-toc-label">Architecture</span></a>
+    <a href="#s-interaction"  class="cs-toc-item" data-section="s-interaction"><span class="cs-toc-num">03</span><span class="cs-toc-label">Interaction</span></a>
+    <a href="#s-validation"   class="cs-toc-item" data-section="s-validation"><span class="cs-toc-num">04</span><span class="cs-toc-label">Validation</span></a>
+  </nav>
+
+  <main class="cs-content">
+
+    <section class="cs-section" id="s-discovery">
+      <span class="cs-step-num" aria-hidden="true">01</span>
+      <h2 class="cs-step-title">Discovery &amp; Alignment</h2>
+      <p class="cs-step-intro">Aura had strong brand equity but a broken funnel. Before any design work, we needed to understand exactly where and why users were abandoning the experience.</p>
+
+      <div class="diagram-card">
+        <div class="diagram-label-row"><span class="diagram-tag">Funnel Analysis</span></div>
+        <div class="diagram-card-inner">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:8px 0;">
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:100%;height:22px;background:var(--bg-inset);border-radius:2px;"></div><span style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;min-width:80px;">Home — 100%</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:80%;height:22px;background:var(--bg-inset);border-radius:2px;"></div><span style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;min-width:80px;">Browse — 80%</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:26%;height:22px;background:var(--cream);border-radius:2px;"></div><span style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;min-width:80px;">PDP — 26%</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:14%;height:22px;background:var(--green);border-radius:2px;opacity:0.6;"></div><span style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;min-width:80px;">Cart — 14%</span></div>
+          </div>
+          <div class="sm-sweet-spot" style="margin-top:10px">74% drop-off at PDP &nbsp;/</div>
+        </div>
+      </div>
+
+      <blockquote class="quote-callout">
+        <span class="quote-callout-label">The "Five Whys" Framework</span>
+        <p class="quote-callout-text">Session recordings showed users spending 3–4 minutes on the product page before leaving — not confused, but unconvinced. The gap was trust, not comprehension.</p>
+      </blockquote>
+
+      <div class="two-col" style="margin-top:28px">
+        <div class="prose">
+          <p>I analysed FullStory session recordings, ran moderated usability tests with 8 existing customers, and conducted a heuristic audit of the existing app against Nielsen's principles.</p>
+          <p>Users would scroll repeatedly on the PDP but leave without adding to cart. Exit surveys pointed to three specific trust gaps: ambiguity around limited-edition status, unreliable sizing information, and no way to quickly compare products.</p>
+        </div>
+        <div class="prose">
+          <p>These friction points mapped directly to revenue loss. A 10% improvement to PDP-to-cart conversion would represent significant monthly ARR growth at Aura's volume.</p>
+          <p>I defined three core design principles for the new experience: <strong>confidence</strong> (users know what they're buying), <strong>clarity</strong> (information is easy to find), and <strong>delight</strong> (the brand shines through).</p>
+        </div>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag">Session Recording Analysis</span>
+        <span class="tag">Usability Testing × 8</span>
+        <span class="tag">Heuristic Audit</span>
+        <span class="tag">Exit Survey Analysis</span>
+        <span class="tag">Competitor Benchmarking</span>
+      </div>
+    </section>
+
+    <section class="cs-section" id="s-architecture">
+      <span class="cs-step-num" aria-hidden="true">02</span>
+      <h2 class="cs-step-title">Information Architecture</h2>
+      <p class="cs-step-intro">Restructuring the product discovery and checkout flow so each screen does exactly one job — no more, no less.</p>
+
+      <div class="diagram-card">
+        <div class="arch-diagram-grid">
+          <div>
+            <div class="diagram-label-row"><span class="diagram-tag">App Structure V.3</span></div>
+            <div class="sitemap-block">
+              <div class="sitemap-row">Home</div>
+              <div class="sitemap-row indent">For You</div>
+              <div class="sitemap-row indent">New In</div>
+              <div class="sitemap-row">Browse</div>
+              <div class="sitemap-row indent">Filter</div>
+              <div class="sitemap-row">Product</div>
+              <div class="sitemap-row">Checkout</div>
+            </div>
+          </div>
+          <div>
+            <div class="diagram-label-row"><span class="diagram-tag">Onboarding Flow</span></div>
+            <div class="userflow-block">
+              <div class="uf-box" style="width:90px;"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box pill" style="width:90px;"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box" style="width:90px;"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box pill" style="width:90px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>The filter system was completely replaced — instead of dropdown menus, users tap large visual chips organised by mood, occasion, and material. Filter application is instant with no page reload, reducing friction at the highest abandonment point in the Browse flow.</p>
+      </div>
+    </section>
+
+    <section class="cs-section" id="s-interaction">
+      <span class="cs-step-num" aria-hidden="true">03</span>
+      <h2 class="cs-step-title">Interaction &amp; Visuals</h2>
+      <p class="cs-step-intro">Building the high-fidelity interface with Aura's premium brand language. Every micro-interaction earns its place.</p>
+
+      <div class="diagram-card">
+        <div class="diagram-label-row"><span class="diagram-tag">PDP Redesign</span></div>
+        <div class="diagram-card-inner">
+          <div class="component-card">
+            <div class="component-swatches">
+              <div style="height:80px;background:var(--bg-inset);border-radius:4px;margin-bottom:8px;"></div>
+              <div class="comp-button" style="height:28px;border-radius:100px;"></div>
+              <div class="comp-input" style="height:28px;border-radius:100px;"></div>
+            </div>
+            <div class="component-text-block">
+              <div class="comp-title">Trust First Design</div>
+              <p class="comp-body">Scarcity indicator, revised size guide with fit notes, and a sticky CTA — all above the fold. Image carousels replaced with full-bleed swipeable gallery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card"><span class="insight-num">4.8★</span><span class="insight-label">App Store rating after redesign launch</span></div>
+        <div class="insight-card"><span class="insight-num">2.4×</span><span class="insight-label">Increase in average session depth</span></div>
+        <div class="insight-card"><span class="insight-num">−31%</span><span class="insight-label">First-session bounce rate after new onboarding</span></div>
+      </div>
+    </section>
+
+    <section class="cs-section" id="s-validation">
+      <span class="cs-step-num" aria-hidden="true">04</span>
+      <h2 class="cs-step-title">Validation &amp; Testing</h2>
+      <p class="cs-step-intro">Proving the hypothesis. Four rounds of prototype testing, iterating until the new PDP experience felt genuinely fluid.</p>
+
+      <div class="metrics-card">
+        <div class="metric-cell">
+          <span class="metric-tag">Conversion Rate</span>
+          <span class="metric-value">+40%</span>
+          <span class="metric-label">Month 1 Post-Launch</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-tag">Task Completion</span>
+          <span class="metric-value">94%</span>
+          <span class="metric-label">Add-to-Cart Success</span>
+        </div>
+      </div>
+
+      <blockquote class="quote-callout">
+        <span class="quote-callout-label">The Feedback Loop</span>
+        <p class="quote-callout-text">The biggest learning: quantitative data tells you where users fail; qualitative research tells you why. Neither alone would have surfaced the sizing-trust issue that became the highest-impact fix.</p>
+      </blockquote>
+    </section>
+
+  </main>
 </div>
 
-<div class="content-section">
-  <p class="content-eyebrow">01 — The Challenge</p>
-  <h2 class="content-title">A beautiful brand with a broken funnel</h2>
-  <div class="two-col">
-    <div class="content-body">
-      <p>Aura had strong brand equity and a loyal customer base, but their mobile app — originally built by a dev shop in 2019 — had never been properly designed. It was functional but joyless, and analytics showed a 74% drop-off at the product detail page.</p>
-      <p>The founder, Marcus Chen, wanted an experience that matched the brand's premium positioning: tactile, confident, and editorially curated. Not another generic commerce template.</p>
-    </div>
-    <div class="content-body">
-      <p>The core design challenge was the onboarding and discovery flow. New users couldn't understand Aura's unique curation model within the first few screens, and existing users found the search and filter system unusable on mobile.</p>
-      <p>My brief was to redesign the end-to-end mobile experience, from first launch through repeat purchase, with a specific focus on the product discovery and checkout funnel.</p>
-    </div>
-  </div>
-  <div class="insight-grid">
-    <div class="insight-card"><span class="insight-num">74%</span><span class="insight-label">Drop-off rate at product detail page (pre-redesign)</span></div>
-    <div class="insight-card"><span class="insight-num">+40%</span><span class="insight-label">Conversion rate increase within first month post-launch</span></div>
-    <div class="insight-card"><span class="insight-num">4.8★</span><span class="insight-label">App Store rating after redesign launch</span></div>
-  </div>
+<div style="border-top:1px solid var(--border);max-width:var(--content-max);margin:0 auto;padding:50px var(--page-pad);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+  <div><span class="next-label">Next Project</span><div class="next-title">Lumina Health Dashboard</div></div>
+  <a href="case-lumina.html" class="btn">View Case Study →</a>
 </div>
 
-<div class="content-section">
-  <p class="content-eyebrow">02 — Research</p>
-  <h2 class="content-title">Understanding the gap between desire and action</h2>
-  <div class="content-body">
-    <p>I began with a two-week discovery sprint: analysing FullStory session recordings, running moderated usability tests with 8 existing customers, and conducting a heuristic audit of the existing app against Nielsen's principles and platform guidelines.</p>
-    <p>The session recordings were revelatory. Users would spend 3–4 minutes on a product page, scrolling repeatedly, then leave without adding to cart. Exit surveys pointed to ambiguity: users weren't sure if items were genuinely limited edition, didn't trust the sizing information, and couldn't quickly compare products.</p>
-    <p>I mapped these friction points to a revised user journey and defined three core design principles for the new experience: confidence, clarity, and delight.</p>
-  </div>
-  <div class="tag-list">
-    <span class="tag">Session Recording Analysis</span>
-    <span class="tag">Usability Testing × 8</span>
-    <span class="tag">Heuristic Audit</span>
-    <span class="tag">Exit Survey Analysis</span>
-    <span class="tag">Competitor Benchmarking</span>
-  </div>
-</div>
-
-<div class="content-section">
-  <p class="content-eyebrow">03 — Design Decisions</p>
-  <h2 class="content-title">Four critical changes that moved the needle</h2>
-  <div class="two-col">
-    <div class="content-body">
-      <p><strong style="font-weight:500">Product Detail Redesign.</strong> I rebuilt the PDP from scratch, prioritising trust signals: a persistent scarcity indicator, a revised size guide with fit notes, and a sticky CTA that didn't require scrolling back to the top. Image carousels were replaced with a swipeable full-bleed gallery.</p>
-      <p><strong style="font-weight:500">Onboarding Flow.</strong> A new three-screen onboarding introduced the curation model, allowing users to select their aesthetic preferences. This data fed a personalised home feed and reduced first-session bounce by 31%.</p>
-    </div>
-    <div class="content-body">
-      <p><strong style="font-weight:500">Discovery Overhaul.</strong> The filter system was replaced with a visual faceted search: instead of dropdown menus, users tapped large visual chips organised by mood, occasion, and material. Filter application was instant with no page reload.</p>
-      <p><strong style="font-weight:500">Micro-interactions.</strong> I designed a suite of small moments — an add-to-cart animation, a haptic-linked wishlist toggle, a personalised "You might also love" section powered by browsing behaviour. These increased session depth by 2.4× on average.</p>
-    </div>
-  </div>
-</div>
-
-<div class="content-section">
-  <p class="content-eyebrow">04 — Reflection</p>
-  <h2 class="content-title">What I'd do differently</h2>
-  <div class="content-body">
-    <p>The biggest learning from this project was the value of quantitative data as a starting point for qualitative research. The session recordings told me where users were failing; the interviews told me why. Neither alone would have surfaced the sizing-trust issue that turned out to be the single highest-impact fix.</p>
-    <p>If I were starting again, I'd invest more time in the repeat-purchase experience. We focused heavily on acquisition and first-purchase conversion, but retention data from the six months post-launch showed that the re-engagement flow needed as much attention as the initial funnel. That work is ongoing.</p>
-  </div>
-</div>
-
-<div class="next-project">
-  <div>
-    <p class="next-label">Next Project</p>
-    <h3 class="next-title">Lumina Health Dashboard</h3>
-  </div>
-  <a href="case-lumina.html" class="next-link">View Case Study →</a>
-</div>
-
-<footer>
+<footer class="site-footer">
   <span class="footer-logo">jd.</span>
-  <span class="footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
-  <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email →</a></div>
+  <span class="cs-footer-meta">[document_type: process_deep_dive] // ver: 04.2024</span>
+  <a href="case-lumina.html" class="cs-footer-next">Next Section →</a>
 </footer>
+
+<script>
+const sections = document.querySelectorAll('.cs-section');
+const tocItems = document.querySelectorAll('.cs-toc-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>

@@ -4,178 +4,220 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lumina Health Dashboard — JD Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f0ede6; --text: #2c2c2a; --text-muted: #7a7a72; --text-light: #adadA0;
-    --accent: #5a6b52; --border: #d8d4cc;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Jost', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; background: rgba(240,237,230,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: var(--text); text-decoration: none; }
-  .nav-back { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
-  .case-hero { padding: 140px 48px 80px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
-  .case-category { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
-  .case-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -0.01em; margin-bottom: 28px; }
-  .case-desc { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); max-width: 440px; }
-  .case-hero-right { display: flex; flex-direction: column; gap: 20px; }
-  .meta-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
-  .meta-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
-  .meta-value { font-size: 0.78rem; color: var(--text); }
-  .case-mockup { width: 100%; background: var(--accent); min-height: 480px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .dash-frame { width: 65%; max-width: 560px; background: rgba(255,255,255,0.1); border-radius: 8px; padding: 22px; }
-  .dash-header { display: flex; gap: 10px; margin-bottom: 18px; }
-  .dash-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); }
-  .dash-row { height: 8px; background: rgba(255,255,255,0.25); border-radius: 2px; margin-bottom: 10px; }
-  .dash-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .dash-card { height: 64px; background: rgba(255,255,255,0.18); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-  .dash-big { height: 100px; background: rgba(255,255,255,0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-  .circle-emblem { width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); }
-
-  .content-section { max-width: 900px; margin: 0 auto; padding: 70px 48px; }
-  .content-section + .content-section { border-top: 1px solid var(--border); }
-  .content-eyebrow { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
-  .content-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; margin-bottom: 24px; }
-  .content-body { font-size: 0.85rem; line-height: 1.9; color: var(--text-muted); }
-  .content-body p + p { margin-top: 16px; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .insight-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
-  .insight-card { border: 1px solid var(--border); padding: 24px 20px; border-radius: 3px; }
-  .insight-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text); display: block; margin-bottom: 8px; }
-  .insight-label { font-size: 0.72rem; line-height: 1.6; color: var(--text-muted); }
-  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .tag { padding: 7px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
-  .next-project { border-top: 1px solid var(--border); padding: 60px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; }
-  .next-label { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-  .next-title { font-family: var(--font-display); font-size: 2rem; font-weight: 300; }
-  .next-link { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; border: 1px solid var(--text); padding: 10px 22px; border-radius: 100px; transition: background .2s, color .2s; }
-  .next-link:hover { background: var(--text); color: var(--bg); }
-  footer { border-top: 1px solid var(--border); padding: 22px 48px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
-  .footer-copy { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); text-decoration: none; }
-  @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .case-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
-    .content-section { padding: 50px 24px; }
-    .two-col { grid-template-columns: 1fr; }
-    .insight-grid { grid-template-columns: 1fr 1fr; }
-    .next-project { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
-    footer { flex-direction: column; gap: 14px; padding: 20px 24px; text-align: center; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
+
+<nav class="site-nav">
   <a href="index.html" class="nav-logo">jd.</a>
-  <a href="index.html#work" class="nav-back">← Back to Work</a>
+  <a href="index.html#work" class="nav-back">Back to Portfolio</a>
 </nav>
 
-<div class="case-hero">
-  <div class="case-hero-left">
-    <p class="case-category">UX Research &nbsp;·&nbsp; Data Visualisation &nbsp;·&nbsp; 2022</p>
-    <h1 class="case-title">Lumina Health Dashboard</h1>
-    <p class="case-desc">Designing a patient-facing chronic illness management dashboard that translates complex clinical data into actionable, emotionally considered insights.</p>
+<header class="cs-hero">
+  <div class="cs-hero-meta">
+    <span class="cs-category">UX Research</span>
+    <span class="cs-meta-dot">·</span>
+    <span class="cs-category">Data Visualisation</span>
+    <span class="cs-meta-dot">·</span>
+    <span class="cs-category">2022</span>
   </div>
-  <div class="case-hero-right">
-    <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">UX Lead &amp; Researcher</span></div>
-    <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-value">7 Months</span></div>
-    <div class="meta-row"><span class="meta-label">Platform</span><span class="meta-value">Web (Desktop-first)</span></div>
-    <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Figma, Dovetail, D3.js Prototypes</span></div>
-    <div class="meta-row" style="border:none;padding:0"><span class="meta-label">Recognition</span><span class="meta-value" style="color:#5a6b52;font-weight:500">Healthcare UX Award 2022</span></div>
+  <h1 class="cs-title">Lumina Health<br>Dashboard</h1>
+  <p class="prose" style="max-width:600px;margin-bottom:0">Designing a patient-facing chronic illness management dashboard that translates complex clinical data into actionable, emotionally considered insights.</p>
+  <div class="cs-summary-grid">
+    <div class="cs-summary-cell"><span class="cs-summary-label">System Architecture</span><span class="cs-summary-value">Patient-Centred Data Model</span></div>
+    <div class="cs-summary-cell"><span class="cs-summary-label">Typical Duration</span><span class="cs-summary-value">7 Months End-to-End</span></div>
+    <div class="cs-summary-cell"><span class="cs-summary-label">Role</span><span class="cs-summary-value">UX Lead &amp; Researcher</span></div>
+    <div class="cs-summary-cell"><span class="cs-summary-label">Outcome</span><span class="cs-summary-value accent">+37pp comprehension</span></div>
   </div>
-</div>
+</header>
 
-<div class="case-mockup">
-  <div class="dash-frame">
-    <div class="dash-header"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div></div>
-    <div class="dash-row" style="width:40%"></div>
-    <div class="dash-grid">
-      <div class="dash-card"><div class="circle-emblem"></div></div>
-      <div class="dash-card"></div>
-      <div class="dash-card"></div>
+<div class="cs-banner cs-banner-lumina" aria-hidden="true">
+  <div style="width:60%;max-width:480px;background:rgba(255,255,255,0.1);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:10px;">
+    <div style="display:flex;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);"></div><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);"></div></div>
+    <div style="height:8px;width:35%;background:rgba(255,255,255,0.35);border-radius:2px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div style="height:56px;background:rgba(255,255,255,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;"><div style="width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);"></div></div>
+      <div style="height:56px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
+      <div style="height:56px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
     </div>
-    <div class="dash-big"></div>
-    <div class="dash-row" style="width:65%;margin-top:12px"></div>
-    <div class="dash-row" style="width:45%"></div>
+    <div style="height:80px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
   </div>
 </div>
 
-<div class="content-section">
-  <p class="content-eyebrow">01 — Context</p>
-  <h2 class="content-title">Data without meaning is noise</h2>
-  <div class="two-col">
-    <div class="content-body">
-      <p>Lumina provides a remote monitoring platform for patients managing chronic conditions — primarily Type 2 diabetes and hypertension. Clinicians could see rich dashboards; patients saw a stripped-down mobile screen with numbers and no context.</p>
-      <p>Elena Rodriguez, Design Director at Lumina, brought me in to design a patient-facing dashboard that could sit alongside the clinical view — giving patients genuine insight without the cognitive overwhelm of raw medical data.</p>
-    </div>
-    <div class="content-body">
-      <p>The unique challenge here was emotional: this data is deeply personal, and presenting it badly could cause anxiety or false reassurance. Every design decision had to be considered through both a usability lens and an emotional one.</p>
-      <p>I worked in close collaboration with two clinical advisors throughout the project to ensure medical accuracy and appropriate framing of all health trends.</p>
-    </div>
-  </div>
+<div class="cs-body">
+
+  <nav class="cs-toc" aria-label="Page sections">
+    <a href="#s-discovery"    class="cs-toc-item active" data-section="s-discovery"><span class="cs-toc-num">01</span><span class="cs-toc-label">Discovery</span></a>
+    <a href="#s-architecture" class="cs-toc-item" data-section="s-architecture"><span class="cs-toc-num">02</span><span class="cs-toc-label">Architecture</span></a>
+    <a href="#s-interaction"  class="cs-toc-item" data-section="s-interaction"><span class="cs-toc-num">03</span><span class="cs-toc-label">Interaction</span></a>
+    <a href="#s-validation"   class="cs-toc-item" data-section="s-validation"><span class="cs-toc-num">04</span><span class="cs-toc-label">Validation</span></a>
+  </nav>
+
+  <main class="cs-content">
+
+    <section class="cs-section" id="s-discovery">
+      <span class="cs-step-num" aria-hidden="true">01</span>
+      <h2 class="cs-step-title">Discovery &amp; Alignment</h2>
+      <p class="cs-step-intro">Every project starts with radical honesty. For Lumina, that meant confronting a difficult truth: data without emotional context can cause more harm than it prevents.</p>
+
+      <div class="diagram-card">
+        <div class="diagram-label-row"><span class="diagram-tag">Stakeholder Matrix</span></div>
+        <div class="diagram-card-inner">
+          <div class="stakeholder-matrix">
+            <div class="sm-item"><div class="sm-circle business"></div><div class="sm-circle-label">Clinician</div></div>
+            <div class="sm-item"><div class="sm-circle user-need"></div><div class="sm-circle-label">Patient Need</div></div>
+            <div class="sm-item"><div class="sm-circle tech-logic"></div><div class="sm-circle-label">Data Model</div></div>
+          </div>
+          <div class="sm-sweet-spot">The Sweet Spot &nbsp;/</div>
+        </div>
+      </div>
+
+      <blockquote class="quote-callout">
+        <span class="quote-callout-label">Research Insight</span>
+        <p class="quote-callout-text">In 22 interviews, patients consistently said numbers felt threatening and graphs felt clinical. Most defaulted to asking their GP what the data meant, rather than interpreting it themselves.</p>
+      </blockquote>
+
+      <div class="two-col" style="margin-top:28px">
+        <div class="prose">
+          <p>I conducted 22 in-depth interviews with patients across different literacy levels, ages, and conditions. Sessions were deliberately slow-paced with open-ended prompts: "Tell me about a time you felt confused by your health data."</p>
+          <p>I also ran a card sort with 16 participants to understand how patients naturally grouped health concepts — leading to a revised IA that matched patient mental models rather than clinical categories.</p>
+        </div>
+        <div class="prose">
+          <p>Every design decision was reviewed through both a usability lens and an emotional one. I worked with two clinical advisors throughout to ensure medical accuracy and appropriate framing of all health trends.</p>
+          <p>All research was synthesised in Dovetail, producing a 34-page report that became a foundational document for product and clinical teams.</p>
+        </div>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag">In-depth Interviews × 22</span>
+        <span class="tag">Card Sorting × 16</span>
+        <span class="tag">Accessibility Research</span>
+        <span class="tag">Clinical Collaboration</span>
+        <span class="tag">Plain Language Audit</span>
+      </div>
+    </section>
+
+    <section class="cs-section" id="s-architecture">
+      <span class="cs-step-num" aria-hidden="true">02</span>
+      <h2 class="cs-step-title">Information Architecture</h2>
+      <p class="cs-step-intro">Defining the skeletal structure. Every metric shown in relation to a goal or trend — never in isolation. Structure before visuals.</p>
+
+      <div class="diagram-card">
+        <div class="arch-diagram-grid">
+          <div>
+            <div class="diagram-label-row"><span class="diagram-tag">Dashboard Structure</span></div>
+            <div class="sitemap-block">
+              <div class="sitemap-row">Overview</div>
+              <div class="sitemap-row indent">Weekly Trend</div>
+              <div class="sitemap-row indent">Goal Progress</div>
+              <div class="sitemap-row">Readings</div>
+              <div class="sitemap-row indent">Blood Pressure</div>
+              <div class="sitemap-row indent">Activity</div>
+              <div class="sitemap-row">Next Steps</div>
+            </div>
+          </div>
+          <div>
+            <div class="diagram-label-row"><span class="diagram-tag">Insight Flow</span></div>
+            <div class="userflow-block">
+              <div class="uf-box" style="width:90px;"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box pill" style="width:90px;"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box" style="width:90px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Three principles governed every architectural decision: context over numbers (every metric in relation to a goal), calm confidence (soft colour ramps, plain language, no alarming red states), and action over reporting (every insight paired with a suggested next step).</p>
+      </div>
+    </section>
+
+    <section class="cs-section" id="s-interaction">
+      <span class="cs-step-num" aria-hidden="true">03</span>
+      <h2 class="cs-step-title">Interaction &amp; Visuals</h2>
+      <p class="cs-step-intro">Building the high-fidelity interface with a calm, considered visual language. Accessibility and emotional safety were the primary constraints.</p>
+
+      <div class="diagram-card">
+        <div class="diagram-label-row"><span class="diagram-tag">Component Library</span></div>
+        <div class="diagram-card-inner">
+          <div class="component-card">
+            <div class="component-swatches">
+              <div style="height:14px;background:var(--green);border-radius:2px;width:100%;margin-bottom:6px;"></div>
+              <div style="height:14px;background:var(--khaki);border-radius:2px;width:80%;margin-bottom:6px;"></div>
+              <div style="height:14px;background:var(--cream);border-radius:2px;width:55%;border:1px solid var(--border);"></div>
+              <div class="comp-circles" style="margin-top:10px">
+                <div class="comp-circle c1"></div>
+                <div class="comp-circle c2"></div>
+                <div class="comp-circle" style="background:var(--khaki);width:30px;height:30px;border-radius:50%;"></div>
+              </div>
+            </div>
+            <div class="component-text-block">
+              <div class="comp-title">Calm Colour System</div>
+              <p class="comp-body">Colour-blind safe palettes, soft gradients instead of binary red/green, and plain language labels replace clinical jargon throughout. All tokens WCAG AA compliant.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card"><span class="insight-num">800</span><span class="insight-label">Beta patients in initial cohort</span></div>
+        <div class="insight-card"><span class="insight-num">+37pp</span><span class="insight-label">Patient self-reported data comprehension</span></div>
+        <div class="insight-card"><span class="insight-num">★ 2022</span><span class="insight-label">Healthcare UX Award — Patient Experience</span></div>
+      </div>
+    </section>
+
+    <section class="cs-section" id="s-validation">
+      <span class="cs-step-num" aria-hidden="true">04</span>
+      <h2 class="cs-step-title">Validation &amp; Testing</h2>
+      <p class="cs-step-intro">Proving the hypothesis. Usability testing with patients across literacy levels, with a specific focus on emotional response alongside task success.</p>
+
+      <div class="metrics-card">
+        <div class="metric-cell">
+          <span class="metric-tag">Comprehension Score</span>
+          <span class="metric-value">71%</span>
+          <span class="metric-label">vs 34% Baseline</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-tag">Follow-up Calls</span>
+          <span class="metric-value">−28%</span>
+          <span class="metric-label">Clinical Team Reduction</span>
+        </div>
+      </div>
+
+      <blockquote class="quote-callout">
+        <span class="quote-callout-label">The Feedback Loop</span>
+        <p class="quote-callout-text">Testing isn't a final hurdle; it's a recurring check-in. For healthcare, the stakes of getting it wrong are higher — so we tested at every stage, including with clinical reviewers after every major iteration.</p>
+      </blockquote>
+    </section>
+
+  </main>
 </div>
 
-<div class="content-section">
-  <p class="content-eyebrow">02 — Research</p>
-  <h2 class="content-title">Listening before designing</h2>
-  <div class="content-body">
-    <p>I conducted 22 in-depth interviews with patients across different literacy levels, ages, and conditions. The sessions were deliberately slow-paced, with open-ended prompts: "Tell me about a time you felt confused by your health data." The responses were consistent: numbers felt threatening, graphs felt clinical, and most patients defaulted to asking their GP what the data meant rather than interpreting it themselves.</p>
-    <p>I also ran a card sort with 16 participants to understand how patients naturally grouped health concepts — which led to a revised information architecture that matched patient mental models rather than clinical categories.</p>
-    <p>All research was synthesised in Dovetail, and I produced a 34-page research report that became a foundational document for the product and clinical teams.</p>
-  </div>
-  <div class="tag-list">
-    <span class="tag">In-depth Interviews × 22</span>
-    <span class="tag">Card Sorting × 16</span>
-    <span class="tag">Accessibility Research</span>
-    <span class="tag">Clinical Collaboration</span>
-    <span class="tag">Emotional Design Framework</span>
-    <span class="tag">Plain Language Audit</span>
-  </div>
+<div style="border-top:1px solid var(--border);max-width:var(--content-max);margin:0 auto;padding:50px var(--page-pad);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+  <div><span class="next-label">Next Project</span><div class="next-title">Meridian Travel Platform</div></div>
+  <a href="case-meridian.html" class="btn">View Case Study →</a>
 </div>
 
-<div class="content-section">
-  <p class="content-eyebrow">03 — Design Principles</p>
-  <h2 class="content-title">Three principles that governed every decision</h2>
-  <div class="insight-grid">
-    <div class="insight-card"><span class="insight-num">01</span><span class="insight-label"><strong style="font-weight:500;display:block;margin-bottom:4px">Context over numbers</strong>Every metric shown in relation to a goal or trend, never in isolation.</span></div>
-    <div class="insight-card"><span class="insight-num">02</span><span class="insight-label"><strong style="font-weight:500;display:block;margin-bottom:4px">Calm confidence</strong>Visual language chosen to reduce anxiety: soft colour ramps, plain language labels, no alarming red states.</span></div>
-    <div class="insight-card"><span class="insight-num">03</span><span class="insight-label"><strong style="font-weight:500;display:block;margin-bottom:4px">Action over reporting</strong>Every insight paired with a suggested next step the patient can actually take.</span></div>
-  </div>
-</div>
-
-<div class="content-section">
-  <p class="content-eyebrow">04 — Outcomes</p>
-  <h2 class="content-title">Impact across patients and clinicians</h2>
-  <div class="content-body">
-    <p>The dashboard launched to a beta cohort of 800 patients. In the first three months, self-reported understanding of personal health data rose from 34% to 71%. Clinical teams reported a meaningful reduction in follow-up calls from patients seeking explanations of their data.</p>
-    <p>The project received the Healthcare UX Award for 2022 in the Patient Experience category. Elena Rodriguez's testimonial — "Rarely do you find a designer who understands both the deep aesthetic nuances of typography and the hardcore logic of data structures" — remains one of the pieces of feedback I'm most proud of.</p>
-  </div>
-  <div class="insight-grid" style="margin-top:32px">
-    <div class="insight-card"><span class="insight-num">+37pp</span><span class="insight-label">Increase in patient self-reported data comprehension</span></div>
-    <div class="insight-card"><span class="insight-num">800</span><span class="insight-label">Beta patients in initial cohort</span></div>
-    <div class="insight-card"><span class="insight-num">★ 2022</span><span class="insight-label">Healthcare UX Award — Patient Experience Category</span></div>
-  </div>
-</div>
-
-<div class="next-project">
-  <div>
-    <p class="next-label">Next Project</p>
-    <h3 class="next-title">Meridian Travel Platform</h3>
-  </div>
-  <a href="case-meridian.html" class="next-link">View Case Study →</a>
-</div>
-
-<footer>
+<footer class="site-footer">
   <span class="footer-logo">jd.</span>
-  <span class="footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
-  <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email →</a></div>
+  <span class="cs-footer-meta">[document_type: process_deep_dive] // ver: 04.2024</span>
+  <a href="case-meridian.html" class="cs-footer-next">Next Section →</a>
 </footer>
+
+<script>
+const sections = document.querySelectorAll('.cs-section');
+const tocItems = document.querySelectorAll('.cs-toc-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>

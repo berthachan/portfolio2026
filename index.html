@@ -4,428 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JD — Product & UX Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #f0ede6;
-    --bg2: #ebe8e1;
-    --text: #2c2c2a;
-    --text-muted: #7a7a72;
-    --text-light: #adadA0;
-    --green: #5a6b52;
-    --slate: #4f5c60;
-    --cream: #ddd8c8;
-    --khaki: #a89f7e;
-    --border: #d8d4cc;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Jost', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 48px;
-    background: rgba(240,237,230,0.9);
-    backdrop-filter: blur(8px);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.35rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 36px; }
-  .nav-links a {
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text);
-    text-decoration: none;
-    transition: opacity .2s;
-  }
-  .nav-links a:hover { opacity: 0.5; }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 120px 48px 60px;
-    position: relative;
-    text-align: center;
-  }
-  .hero-stats {
-    display: flex; gap: 48px; margin-bottom: 64px;
-  }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 300;
-    display: block;
-    letter-spacing: 0.04em;
-  }
-  .stat-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-  .hero-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 18px;
-  }
-  .hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 10vw, 9rem);
-    font-weight: 300;
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin-bottom: 40px;
-    animation: fadeUp 1s ease both;
-  }
-  .hero-ctas {
-    display: flex; gap: 14px; margin-bottom: 60px;
-    animation: fadeUp 1s .2s ease both;
-  }
-  .btn {
-    display: inline-block;
-    padding: 10px 24px;
-    border: 1px solid var(--text);
-    border-radius: 100px;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text);
-    text-decoration: none;
-    transition: background .2s, color .2s;
-    cursor: pointer;
-  }
-  .btn:hover { background: var(--text); color: var(--bg); }
-  .discipline-circles {
-    display: flex; gap: 24px; align-items: flex-end;
-    animation: fadeUp 1s .4s ease both;
-  }
-  .disc-item { text-align: center; }
-  .disc-circle {
-    width: 56px; height: 56px; border-radius: 50%;
-    margin: 0 auto 8px;
-  }
-  .disc-circle.research { background: var(--green); }
-  .disc-circle.wireframes { background: var(--slate); }
-  .disc-circle.prototyping { background: var(--cream); }
-  .disc-circle.systems { background: var(--khaki); }
-  .disc-label {
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  /* Floating labels */
-  .label-float {
-    position: absolute;
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .label-float.primary { top: 140px; right: 48px; }
-  .label-float.systems { bottom: 120px; left: 48px; }
-  .label-float svg { opacity: 0.4; }
-  .v-tag {
-    position: absolute; left: 48px; top: 46%;
-    font-size: 0.58rem; letter-spacing: 0.1em; color: var(--text-light);
-    writing-mode: vertical-rl; transform: rotate(180deg);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .v-tag::after { content: ''; display: block; width: 1px; height: 36px; background: var(--text-light); }
-
-  /* ── CASE STUDIES ── */
-  .section-header {
-    text-align: center;
-    padding: 80px 48px 40px;
-  }
-  .section-eyebrow {
-    font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--text-muted); margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 6vw, 5rem);
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text);
-  }
-  .cases-grid {
-    max-width: 1300px; margin: 0 auto;
-    padding: 20px 48px 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-  .case-card {
-    text-decoration: none; color: var(--text);
-    display: block;
-  }
-  .case-card:nth-child(even) { margin-top: 80px; }
-  .case-thumb {
-    width: 100%; aspect-ratio: 4/3;
-    border-radius: 4px; overflow: hidden;
-    position: relative;
-    transition: transform .4s ease;
-  }
-  .case-card:hover .case-thumb { transform: translateY(-4px); }
-  .case-thumb-inner {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  /* Nexus - beige wireframe */
-  .thumb-nexus { background: #c8c0a8; }
-  .thumb-nexus .wire-top { position: absolute; top: 14%; left: 8%; width: 28%; height: 11%; background: rgba(240,237,230,0.7); border-radius: 2px; }
-  .thumb-nexus .wire-main { position: absolute; top: 30%; left: 8%; right: 8%; height: 24%; background: rgba(240,237,230,0.55); border-radius: 2px; }
-  .thumb-nexus .wire-b1 { position: absolute; bottom: 14%; left: 8%; width: 42%; height: 17%; background: rgba(240,237,230,0.55); border-radius: 2px; }
-  .thumb-nexus .wire-b2 { position: absolute; bottom: 14%; right: 8%; width: 42%; height: 17%; background: rgba(240,237,230,0.55); border-radius: 2px; }
-  /* Aura - slate mobile */
-  .thumb-aura { background: #697c80; }
-  .thumb-aura .wire-circle { position: absolute; top: 20%; left: 12%; width: 22%; aspect-ratio:1; background: rgba(255,255,255,0.25); border-radius: 50%; }
-  .thumb-aura .wire-title { position: absolute; top: 20%; left: 40%; right: 6%; height: 10%; background: rgba(255,255,255,0.3); border-radius: 2px; }
-  .thumb-aura .wire-sub { position: absolute; top: 34%; left: 40%; right: 6%; height: 6%; background: rgba(255,255,255,0.2); border-radius: 2px; }
-  .thumb-aura .wire-main { position: absolute; top: 48%; left: 6%; right: 6%; height: 32%; background: rgba(255,255,255,0.2); border-radius: 2px; }
-  /* Lumina - sage green */
-  .thumb-lumina { background: #5a6b52; }
-  .thumb-lumina .wire-circle { position: absolute; top: 25%; left: 50%; transform: translateX(-50%); width: 38%; aspect-ratio:1; background: rgba(240,237,230,0.2); border-radius: 50%; }
-  /* Meridian - tan grid */
-  .thumb-meridian { background: #b5aa90; }
-  .thumb-meridian .wire-g1 { position: absolute; top: 6%; left: 4%; width: 44%; height: 44%; background: rgba(240,237,230,0.5); border-radius: 2px; }
-  .thumb-meridian .wire-g2 { position: absolute; top: 6%; right: 4%; width: 44%; height: 44%; background: rgba(240,237,230,0.5); border-radius: 2px; }
-  .thumb-meridian .wire-g3 { position: absolute; bottom: 6%; left: 4%; width: 44%; height: 44%; background: rgba(240,237,230,0.5); border-radius: 2px; }
-  .thumb-meridian .wire-g4 { position: absolute; bottom: 6%; right: 4%; width: 44%; height: 44%; background: rgba(240,237,230,0.5); border-radius: 2px; }
-
-  .case-meta {
-    margin-top: 14px;
-    display: flex; justify-content: space-between; align-items: flex-start;
-  }
-  .case-info .case-name {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 300;
-    margin-bottom: 5px;
-  }
-  .case-tags {
-    font-size: 0.58rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .case-year {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    white-space: nowrap;
-    align-self: flex-start;
-  }
-
-  /* ── PROCESS ── */
-  .process-section {
-    border-top: 1px solid var(--border);
-    padding: 80px 48px;
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 60px;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-  .process-left {}
-  .process-eyebrow {
-    font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase;
-    color: var(--text-muted); margin-bottom: 10px;
-  }
-  .process-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .process-desc {
-    font-size: 0.8rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-  }
-  .iterative-tag {
-    margin-top: 32px;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .iterative-tag::before { content: '→'; }
-  .process-right { display: flex; flex-direction: column; gap: 0; }
-  .process-step {
-    display: grid; grid-template-columns: 28px 1fr;
-    gap: 20px; padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-  .process-step:first-child { border-top: 1px solid var(--border); }
-  .step-check {
-    width: 18px; height: 18px; border: 1.5px solid var(--text-muted);
-    border-radius: 2px; margin-top: 2px;
-    flex-shrink: 0;
-  }
-  .step-num-title {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    margin-bottom: 8px;
-    color: var(--text);
-  }
-  .step-desc {
-    font-size: 0.78rem;
-    line-height: 1.75;
-    color: var(--text-muted);
-  }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials-section {
-    border-top: 1px solid var(--border);
-    padding: 60px 48px;
-  }
-  .testimonials-header {
-    display: flex; align-items: center; gap: 24px;
-    margin-bottom: 32px;
-  }
-  .t-section-label {
-    font-size: 0.6rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--text-muted);
-  }
-  .t-section-value {
-    font-size: 0.6rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--text);
-    font-weight: 500;
-  }
-  .t-divider { width: 1px; height: 14px; background: var(--border); }
-  .t-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-  .t-card {
-    border: 1px solid var(--border);
-    padding: 28px 26px;
-    border-radius: 4px;
-  }
-  .t-quote {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--text);
-    margin-bottom: 20px;
-  }
-  .t-name {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 3px;
-  }
-  .t-role {
-    font-size: 0.65rem;
-    color: var(--text-muted);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 22px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
-  .footer-copy {
-    font-size: 0.58rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--text-muted);
-  }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 0.62rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--text);
-    text-decoration: none; transition: opacity .2s;
-  }
-  .footer-links a:hover { opacity: 0.5; }
-
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero-eyebrow { animation: fadeUp .8s .1s ease both; }
-  .hero-stats { animation: fadeUp .8s .05s ease both; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .nav-links { gap: 20px; }
-    .hero { padding: 100px 24px 50px; }
-    .label-float, .v-tag { display: none; }
-    .cases-grid { grid-template-columns: 1fr; padding: 20px 24px 60px; }
-    .case-card:nth-child(even) { margin-top: 0; }
-    .process-section { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-    .t-grid { grid-template-columns: 1fr; }
-    .testimonials-section { padding: 50px 24px; }
-    footer { flex-direction: column; gap: 16px; text-align: center; padding: 20px 24px; }
-    .section-header { padding: 60px 24px 30px; }
-  }
-  @media (max-width: 600px) {
-    .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
-    .hero-stats { gap: 28px; }
-    .discipline-circles { gap: 14px; }
-    .disc-circle { width: 44px; height: 44px; }
-    .nav-links { display: none; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<nav class="site-nav">
   <a href="index.html" class="nav-logo">jd.</a>
   <div class="nav-links">
     <a href="#work">Work</a>
@@ -435,32 +18,27 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="about">
-  <span class="label-float primary">
+  <span class="label-float primary" aria-hidden="true">
     <svg width="32" height="12" viewBox="0 0 32 12"><path d="M0 6 Q12 0 32 6" stroke="currentColor" stroke-width="1" fill="none"/></svg>
     Primary Discipline
   </span>
-  <div class="v-tag">V.2024.1</div>
-  <span class="label-float systems">
+  <div class="v-tag" aria-hidden="true">V.2024.1</div>
+  <span class="label-float systems" aria-hidden="true">
     <svg width="14" height="14" viewBox="0 0 14 14"><line x1="0" y1="14" x2="14" y2="0" stroke="currentColor" stroke-width="1"/></svg>
     Systems Thinking
   </span>
-
   <div class="hero-stats">
     <div class="stat"><span class="stat-num">08</span><span class="stat-label">Years Exp</span></div>
     <div class="stat"><span class="stat-num">14</span><span class="stat-label">Projects</span></div>
     <div class="stat"><span class="stat-num">03</span><span class="stat-label">Awards</span></div>
   </div>
-
   <p class="hero-eyebrow">The Winning Portfolio</p>
   <h1 class="hero-title">Product &amp; UX<br>Designer</h1>
-
   <div class="hero-ctas">
     <a href="#work" class="btn">View Case Studies</a>
     <a href="#contact" class="btn">Contact Info</a>
   </div>
-
   <div class="discipline-circles">
     <div class="disc-item"><div class="disc-circle research"></div><span class="disc-label">Research</span></div>
     <div class="disc-item"><div class="disc-circle wireframes"></div><span class="disc-label">Wireframes</span></div>
@@ -469,175 +47,69 @@
   </div>
 </section>
 
-<!-- CASE STUDIES -->
 <section id="work">
   <div class="section-header">
-    <p class="section-eyebrow">Selected Works</p>
+    <span class="section-eyebrow">Selected Works</span>
     <h2 class="section-title">Case Studies</h2>
   </div>
   <div class="cases-grid">
-
     <a href="case-nexus.html" class="case-card">
-      <div class="case-thumb">
-        <div class="case-thumb-inner thumb-nexus">
-          <div class="wire-top"></div>
-          <div class="wire-main"></div>
-          <div class="wire-b1"></div>
-          <div class="wire-b2"></div>
-        </div>
-      </div>
-      <div class="case-meta">
-        <div class="case-info">
-          <div class="case-name">Nexus Financial Platform</div>
-          <div class="case-tags">UX/UI &nbsp; Design System</div>
-        </div>
-        <span class="case-year">2023</span>
-      </div>
+      <div class="case-thumb"><div class="case-thumb-inner thumb-nexus"><div class="wire-top"></div><div class="wire-main"></div><div class="wire-b1"></div><div class="wire-b2"></div></div></div>
+      <div class="case-meta"><div><div class="case-name">Nexus Financial Platform</div><div class="case-tags">UX/UI &nbsp; Design System</div></div><span class="case-year">2023</span></div>
     </a>
-
     <a href="case-aura.html" class="case-card">
-      <div class="case-thumb">
-        <div class="case-thumb-inner thumb-aura">
-          <div class="wire-circle"></div>
-          <div class="wire-title"></div>
-          <div class="wire-sub"></div>
-          <div class="wire-main"></div>
-        </div>
-      </div>
-      <div class="case-meta">
-        <div class="case-info">
-          <div class="case-name">Aura E-Commerce App</div>
-          <div class="case-tags">Product Design &nbsp; Mobile</div>
-        </div>
-        <span class="case-year">2022</span>
-      </div>
+      <div class="case-thumb"><div class="case-thumb-inner thumb-aura"><div class="wire-circle"></div><div class="wire-title"></div><div class="wire-sub"></div><div class="wire-main"></div></div></div>
+      <div class="case-meta"><div><div class="case-name">Aura E-Commerce App</div><div class="case-tags">Product Design &nbsp; Mobile</div></div><span class="case-year">2022</span></div>
     </a>
-
     <a href="case-lumina.html" class="case-card">
-      <div class="case-thumb">
-        <div class="case-thumb-inner thumb-lumina">
-          <div class="wire-circle"></div>
-        </div>
-      </div>
-      <div class="case-meta">
-        <div class="case-info">
-          <div class="case-name">Lumina Health Dashboard</div>
-          <div class="case-tags">UX Research &nbsp; Data Viz</div>
-        </div>
-        <span class="case-year">2022</span>
-      </div>
+      <div class="case-thumb"><div class="case-thumb-inner thumb-lumina"><div class="wire-circle"></div></div></div>
+      <div class="case-meta"><div><div class="case-name">Lumina Health Dashboard</div><div class="case-tags">UX Research &nbsp; Data Viz</div></div><span class="case-year">2022</span></div>
     </a>
-
     <a href="case-meridian.html" class="case-card">
-      <div class="case-thumb">
-        <div class="case-thumb-inner thumb-meridian">
-          <div class="wire-g1"></div>
-          <div class="wire-g2"></div>
-          <div class="wire-g3"></div>
-          <div class="wire-g4"></div>
-        </div>
-      </div>
-      <div class="case-meta">
-        <div class="case-info">
-          <div class="case-name">Meridian Travel Platform</div>
-          <div class="case-tags">Product Design &nbsp; Web</div>
-        </div>
-        <span class="case-year">2021</span>
-      </div>
+      <div class="case-thumb"><div class="case-thumb-inner thumb-meridian"><div class="wire-g1"></div><div class="wire-g2"></div><div class="wire-g3"></div><div class="wire-g4"></div></div></div>
+      <div class="case-meta"><div><div class="case-name">Meridian Travel Platform</div><div class="case-tags">Product Design &nbsp; Web</div></div><span class="case-year">2021</span></div>
     </a>
-
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process">
+<section id="process" class="process-outer">
   <div class="process-section">
-    <div class="process-left">
-      <p class="process-eyebrow">The Winning Process</p>
+    <div>
+      <span class="process-eyebrow">The Winning Process</span>
       <h2 class="process-title">Check-<br>list</h2>
       <p class="process-desc">A systematic approach to solving complex product challenges, ensuring no detail is overlooked from discovery to handoff.</p>
       <div class="iterative-tag">Iterative Loops</div>
     </div>
     <div class="process-right">
-      <div class="process-step">
-        <div class="step-check"></div>
-        <div>
-          <div class="step-num-title">01. Discovery &amp; Alignment</div>
-          <p class="step-desc">Establishing the core problem statement. Conducting stakeholder interviews, defining user personas, and mapping out initial user journeys to ensure business goals align with user needs.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-check"></div>
-        <div>
-          <div class="step-num-title">02. Information Architecture</div>
-          <p class="step-desc">Structuring the content. Creating sitemaps, user flows, and low-fidelity wireframes to establish the structural foundation before visual design begins.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-check"></div>
-        <div>
-          <div class="step-num-title">03. Interaction &amp; Visuals</div>
-          <p class="step-desc">Translating wireframes into high-fidelity screens. Applying or creating design systems, establishing typography hierarchy, and designing micro-interactions.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-check"></div>
-        <div>
-          <div class="step-num-title">04. Prototyping &amp; Testing</div>
-          <p class="step-desc">Building interactive models in Figma to test usability. Conducting moderated testing sessions and iterating based on empirical user feedback.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-check"></div>
-        <div>
-          <div class="step-num-title">05. Handoff &amp; Documentation</div>
-          <p class="step-desc">Preparing developer-ready specs. Annotating edge cases, creating component documentation, and ensuring a smooth transition from design to engineering.</p>
-        </div>
-      </div>
+      <div class="process-step"><div class="step-check"></div><div><div class="step-num-title">01. Discovery &amp; Alignment</div><p class="step-desc">Establishing the core problem statement. Conducting stakeholder interviews, defining user personas, and mapping out initial user journeys to ensure business goals align with user needs.</p></div></div>
+      <div class="process-step"><div class="step-check"></div><div><div class="step-num-title">02. Information Architecture</div><p class="step-desc">Structuring the content. Creating sitemaps, user flows, and low-fidelity wireframes to establish the structural foundation before visual design begins.</p></div></div>
+      <div class="process-step"><div class="step-check"></div><div><div class="step-num-title">03. Interaction &amp; Visuals</div><p class="step-desc">Translating wireframes into high-fidelity screens. Applying or creating design systems, establishing typography hierarchy, and designing micro-interactions.</p></div></div>
+      <div class="process-step"><div class="step-check"></div><div><div class="step-num-title">04. Prototyping &amp; Testing</div><p class="step-desc">Building interactive models in Figma to test usability. Conducting moderated testing sessions and iterating based on empirical user feedback.</p></div></div>
+      <div class="process-step"><div class="step-check"></div><div><div class="step-num-title">05. Handoff &amp; Documentation</div><p class="step-desc">Preparing developer-ready specs. Annotating edge cases, creating component documentation, and ensuring smooth transition from design to engineering.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section id="contact">
   <div class="testimonials-section">
     <div class="testimonials-header">
-      <span class="t-section-label">Section</span>
-      <div class="t-divider"></div>
-      <span class="t-section-value">Client Feedback</span>
-      <div class="t-divider"></div>
-      <span class="t-section-label">Data Points</span>
-      <div class="t-divider"></div>
+      <span class="t-section-label">Section</span><div class="t-divider"></div>
+      <span class="t-section-value">Client Feedback</span><div class="t-divider"></div>
+      <span class="t-section-label">Data Points</span><div class="t-divider"></div>
       <span class="t-section-value">03</span>
     </div>
     <div class="t-grid">
-      <div class="t-card">
-        <p class="t-quote">"An obsessive attention to detail. They didn't just design screens; they architected a system that allowed our engineering team to build twice as fast."</p>
-        <div class="t-name">Sarah Jenkins</div>
-        <div class="t-role">VP Product, Nexus</div>
-      </div>
-      <div class="t-card">
-        <p class="t-quote">"The clarity they brought to our complex onboarding flow was transformative. Conversion rates increased by 40% within a month of launch."</p>
-        <div class="t-name">Marcus Chen</div>
-        <div class="t-role">Founder, Aura App</div>
-      </div>
-      <div class="t-card">
-        <p class="t-quote">"Rarely do you find a designer who understands both the deep aesthetic nuances of typography and the hardcore logic of data structures. Exceptional work."</p>
-        <div class="t-name">Elena Rodriguez</div>
-        <div class="t-role">Design Director, Lumina</div>
-      </div>
+      <div class="t-card"><p class="t-quote">"An obsessive attention to detail. They didn't just design screens; they architected a system that allowed our engineering team to build twice as fast."</p><div class="t-name">Sarah Jenkins</div><div class="t-role">VP Product, Nexus</div></div>
+      <div class="t-card"><p class="t-quote">"The clarity they brought to our complex onboarding flow was transformative. Conversion rates increased by 40% within a month of launch."</p><div class="t-name">Marcus Chen</div><div class="t-role">Founder, Aura App</div></div>
+      <div class="t-card"><p class="t-quote">"Rarely do you find a designer who understands both the deep aesthetic nuances of typography and the hardcore logic of data structures. Exceptional work."</p><div class="t-name">Elena Rodriguez</div><div class="t-role">Design Director, Lumina</div></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
+<footer class="site-footer">
   <span class="footer-logo">jd.</span>
   <span class="footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
-  <div class="footer-links">
-    <a href="#">LinkedIn</a>
-    <a href="#">Email →</a>
-  </div>
+  <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email →</a></div>
 </footer>
 
 </body>
