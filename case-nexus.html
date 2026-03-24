@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Financial Platform — JD Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f0ede6; --text: #2c2c2a; --text-muted: #7a7a72; --text-light: #adadA0;
+    --green: #5a6b52; --slate: #4f5c60; --cream: #ddd8c8; --khaki: #a89f7e;
+    --border: #d8d4cc; --accent: #c8c0a8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 48px; background: rgba(240,237,230,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; font-weight: 400; color: var(--text); text-decoration: none; }
+  .nav-back { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: opacity .2s; }
+  .nav-back:hover { opacity: 0.5; }
+
+  /* HERO */
+  .case-hero {
+    padding: 140px 48px 80px;
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;
+  }
+  .case-hero-left {}
+  .case-category { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .case-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -0.01em; margin-bottom: 28px; }
+  .case-desc { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); max-width: 440px; }
+  .case-hero-right { display: flex; flex-direction: column; gap: 20px; }
+  .meta-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+  .meta-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+  .meta-value { font-size: 0.78rem; font-weight: 400; color: var(--text); }
+
+  /* MOCKUP */
+  .case-mockup {
+    width: 100%; background: var(--accent); min-height: 480px;
+    display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+  }
+  .mockup-inner { width: 70%; max-width: 640px; background: rgba(240,237,230,0.12); border-radius: 6px; padding: 24px; }
+  .mock-row { height: 10px; background: rgba(255,255,255,0.4); border-radius: 2px; margin-bottom: 10px; }
+  .mock-row.short { width: 35%; }
+  .mock-row.med { width: 60%; }
+  .mock-row.full { width: 100%; height: 80px; margin-bottom: 14px; }
+  .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mock-grid-item { height: 60px; background: rgba(255,255,255,0.3); border-radius: 2px; }
+
+  /* CONTENT SECTIONS */
+  .content-section { max-width: 900px; margin: 0 auto; padding: 70px 48px; }
+  .content-section + .content-section { border-top: 1px solid var(--border); }
+  .content-eyebrow { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+  .content-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; margin-bottom: 24px; }
+  .content-body { font-size: 0.85rem; line-height: 1.9; color: var(--text-muted); }
+  .content-body p + p { margin-top: 16px; }
+
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  /* INSIGHT CARDS */
+  .insight-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+  .insight-card { border: 1px solid var(--border); padding: 24px 20px; border-radius: 3px; }
+  .insight-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text); display: block; margin-bottom: 8px; }
+  .insight-label { font-size: 0.72rem; line-height: 1.6; color: var(--text-muted); }
+
+  /* PROCESS TAGS */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag { padding: 7px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+
+  /* NEXT PROJECT */
+  .next-project {
+    border-top: 1px solid var(--border); padding: 60px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1300px; margin: 0 auto;
+  }
+  .next-label { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .next-title { font-family: var(--font-display); font-size: 2rem; font-weight: 300; }
+  .next-link { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; border: 1px solid var(--text); padding: 10px 22px; border-radius: 100px; transition: background .2s, color .2s; }
+  .next-link:hover { background: var(--text); color: var(--bg); }
+
+  footer { border-top: 1px solid var(--border); padding: 22px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
+  .footer-copy { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .case-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
+    .content-section { padding: 50px 24px; }
+    .two-col { grid-template-columns: 1fr; }
+    .insight-grid { grid-template-columns: 1fr 1fr; }
+    .next-project { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
+    footer { flex-direction: column; gap: 14px; padding: 20px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">jd.</a>
+  <a href="index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-left">
+    <p class="case-category">UX/UI &nbsp;·&nbsp; Design System &nbsp;·&nbsp; 2023</p>
+    <h1 class="case-title">Nexus Financial Platform</h1>
+    <p class="case-desc">Redesigning the core trading interface and building a scalable design system for a B2B fintech serving over 40,000 institutional users across 12 countries.</p>
+  </div>
+  <div class="case-hero-right">
+    <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">Lead Product Designer</span></div>
+    <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-value">9 Months</span></div>
+    <div class="meta-row"><span class="meta-label">Team</span><span class="meta-value">1 Designer, 3 Engineers, 1 PM</span></div>
+    <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Figma, FigJam, Maze, Zeroheight</span></div>
+    <div class="meta-row" style="border:none;padding:0"><span class="meta-label">Outcome</span><span class="meta-value" style="color:var(--green);font-weight:500">2× faster dev velocity</span></div>
+  </div>
+</div>
+
+<div class="case-mockup">
+  <div class="mockup-inner">
+    <div class="mock-row short"></div>
+    <div class="mock-row full"></div>
+    <div class="mock-grid">
+      <div class="mock-grid-item"></div>
+      <div class="mock-grid-item"></div>
+    </div>
+    <div class="mock-row med" style="margin-top:10px"></div>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">01 — The Problem</p>
+  <h2 class="content-title">A fragmented system slowing teams down</h2>
+  <div class="two-col">
+    <div class="content-body">
+      <p>Nexus had grown through acquisition, inheriting three separate frontend codebases, each with its own visual language. Engineers were spending 30% of their sprint capacity resolving design inconsistencies instead of shipping features.</p>
+      <p>Users — institutional traders — reported high cognitive load when switching between modules. The platform failed accessibility audits, and dark mode didn't exist despite near-universal demand.</p>
+    </div>
+    <div class="content-body">
+      <p>My mandate: build a unified design system from the ground up, while simultaneously redesigning the primary trading dashboard to meet the needs of power users managing multi-asset portfolios.</p>
+      <p>The constraint: we could not break existing workflows or require users to relearn the product. Every change had to be backward-compatible in behaviour, while being visually and structurally new.</p>
+    </div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><span class="insight-num">40k</span><span class="insight-label">Institutional users across 12 countries</span></div>
+    <div class="insight-card"><span class="insight-num">30%</span><span class="insight-label">Sprint time lost to design inconsistencies</span></div>
+    <div class="insight-card"><span class="insight-num">3</span><span class="insight-label">Separate codebases inherited through acquisitions</span></div>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">02 — Discovery</p>
+  <h2 class="content-title">Research that changed the brief</h2>
+  <div class="content-body">
+    <p>I ran 14 contextual interviews with traders across London, New York, and Singapore over three weeks. The sessions were observational — I watched users work in their actual environment, noting where they hesitated, where they used workarounds, and what they said out loud.</p>
+    <p>The biggest finding was unexpected: the primary usability issue wasn't the interface — it was the information architecture. Users had developed an elaborate mental model of the platform that didn't match the navigation structure at all. Menus were labelled from an engineering perspective, not a trading workflow perspective.</p>
+    <p>I synthesised these insights into three user archetypes and a revised task hierarchy that became the north star for the entire redesign.</p>
+  </div>
+  <div class="tag-list">
+    <span class="tag">Contextual Inquiry</span>
+    <span class="tag">User Interviews × 14</span>
+    <span class="tag">Task Analysis</span>
+    <span class="tag">Affinity Mapping</span>
+    <span class="tag">Persona Definition</span>
+    <span class="tag">Jobs-to-be-Done</span>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">03 — Design System</p>
+  <h2 class="content-title">Building Nexus DS — 240 components, 2 themes</h2>
+  <div class="two-col">
+    <div class="content-body">
+      <p>I architected the design system in Figma using a three-tier token structure: primitive → semantic → component. This meant that theming (light/dark) required changing a single token layer, and the entire system updated automatically.</p>
+      <p>Every component was documented in Zeroheight with usage guidelines, accessibility requirements (WCAG AA), and code snippets reviewed by the lead engineer.</p>
+    </div>
+    <div class="content-body">
+      <p>The data visualisation library was the most complex undertaking — 26 chart variants with consistent interaction patterns, tooltip systems, and colour-blind safe palettes. I established rules for when to use each chart type, embedded directly in the documentation.</p>
+      <p>The system shipped in three phases over six months, with a dedicated migration guide for the engineering team to transition legacy components.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">04 — Outcomes</p>
+  <h2 class="content-title">Measurable impact across every metric</h2>
+  <div class="insight-grid">
+    <div class="insight-card"><span class="insight-num">2×</span><span class="insight-label">Faster engineering velocity post-system adoption</span></div>
+    <div class="insight-card"><span class="insight-num">—42%</span><span class="insight-label">Drop in user-reported navigation errors</span></div>
+    <div class="insight-card"><span class="insight-num">AA</span><span class="insight-label">Full WCAG 2.1 accessibility compliance achieved</span></div>
+  </div>
+  <div class="content-body" style="margin-top:32px">
+    <p>Sarah Jenkins, VP Product at Nexus, noted that the design system had fundamentally changed how the engineering team worked — they were spending nearly zero time on visual decisions and could focus entirely on logic. The dark mode launch saw 67% adoption within the first two weeks.</p>
+  </div>
+</div>
+
+<div class="next-project">
+  <div>
+    <p class="next-label">Next Project</p>
+    <h3 class="next-title">Aura E-Commerce App</h3>
+  </div>
+  <a href="case-aura.html" class="next-link">View Case Study →</a>
+</div>
+
+<footer>
+  <span class="footer-logo">jd.</span>
+  <span class="footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
+  <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email →</a></div>
+</footer>
+
+</body>
+</html>

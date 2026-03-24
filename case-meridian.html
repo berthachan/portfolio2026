@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Travel Platform — JD Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f0ede6; --text: #2c2c2a; --text-muted: #7a7a72; --text-light: #adadA0;
+    --accent: #b5aa90; --border: #d8d4cc;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; background: rgba(240,237,230,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: var(--text); text-decoration: none; }
+  .nav-back { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
+  .case-hero { padding: 140px 48px 80px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+  .case-category { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .case-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -0.01em; margin-bottom: 28px; }
+  .case-desc { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); max-width: 440px; }
+  .case-hero-right { display: flex; flex-direction: column; gap: 20px; }
+  .meta-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+  .meta-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+  .meta-value { font-size: 0.78rem; color: var(--text); }
+  .case-mockup { width: 100%; background: var(--accent); min-height: 480px; display: flex; align-items: center; justify-content: center; }
+  .grid-frame { width: 55%; max-width: 480px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gf-cell { background: rgba(240,237,230,0.5); border-radius: 4px; }
+  .gf-cell.tall { aspect-ratio: 3/2; }
+  .gf-cell.short { aspect-ratio: 2/1; }
+  .content-section { max-width: 900px; margin: 0 auto; padding: 70px 48px; }
+  .content-section + .content-section { border-top: 1px solid var(--border); }
+  .content-eyebrow { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+  .content-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; margin-bottom: 24px; }
+  .content-body { font-size: 0.85rem; line-height: 1.9; color: var(--text-muted); }
+  .content-body p + p { margin-top: 16px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .insight-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+  .insight-card { border: 1px solid var(--border); padding: 24px 20px; border-radius: 3px; }
+  .insight-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text); display: block; margin-bottom: 8px; }
+  .insight-label { font-size: 0.72rem; line-height: 1.6; color: var(--text-muted); }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag { padding: 7px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+  .next-project { border-top: 1px solid var(--border); padding: 60px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; }
+  .next-label { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .next-title { font-family: var(--font-display); font-size: 2rem; font-weight: 300; }
+  .next-link { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; border: 1px solid var(--text); padding: 10px 22px; border-radius: 100px; transition: background .2s, color .2s; }
+  .next-link:hover { background: var(--text); color: var(--bg); }
+  footer { border-top: 1px solid var(--border); padding: 22px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
+  .footer-copy { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .case-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
+    .content-section { padding: 50px 24px; }
+    .two-col { grid-template-columns: 1fr; }
+    .insight-grid { grid-template-columns: 1fr 1fr; }
+    .next-project { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
+    footer { flex-direction: column; gap: 14px; padding: 20px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">jd.</a>
+  <a href="index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-left">
+    <p class="case-category">Product Design &nbsp;·&nbsp; Web &nbsp;·&nbsp; 2021</p>
+    <h1 class="case-title">Meridian Travel Platform</h1>
+    <p class="case-desc">Designing a next-generation travel planning platform that helps independent travellers build deeply personalised itineraries without the noise of algorithmic recommendation engines.</p>
+  </div>
+  <div class="case-hero-right">
+    <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">Product Designer</span></div>
+    <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-value">5 Months</span></div>
+    <div class="meta-row"><span class="meta-label">Platform</span><span class="meta-value">Web — Responsive</span></div>
+    <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Figma, Maze, Miro, Notion</span></div>
+    <div class="meta-row" style="border:none;padding:0"><span class="meta-label">Outcome</span><span class="meta-value" style="color:#5a6b52;font-weight:500">3.2× session depth increase</span></div>
+  </div>
+</div>
+
+<div class="case-mockup">
+  <div class="grid-frame">
+    <div class="gf-cell tall"></div>
+    <div class="gf-cell tall"></div>
+    <div class="gf-cell short"></div>
+    <div class="gf-cell short"></div>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">01 — The Brief</p>
+  <h2 class="content-title">Building the anti-algorithm travel tool</h2>
+  <div class="two-col">
+    <div class="content-body">
+      <p>Meridian launched in 2019 as a content-rich travel guide. By 2021, they had amassed 12,000 editorially verified place recommendations across 60 cities — but no way for users to do anything with that content beyond reading it.</p>
+      <p>The founders wanted to build a trip-planning layer on top of the existing content: a tool that let users build itineraries from Meridian's curated database, informed by their own preferences rather than popularity rankings.</p>
+    </div>
+    <div class="content-body">
+      <p>This was fundamentally a search and discovery problem with high emotional stakes. Travel planning is personal — a failed recommendation can ruin a holiday. The design had to build trust quickly and make it easy for users to express nuanced preferences.</p>
+      <p>I was brought in as the sole designer to take the product from zero to a functional MVP in five months, working alongside two engineers and the co-founders.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">02 — Research & Strategy</p>
+  <h2 class="content-title">Understanding how people actually plan trips</h2>
+  <div class="content-body">
+    <p>Before touching Figma, I ran a two-week discovery phase: 11 interviews with frequent independent travellers, a diary study with 6 participants planning real upcoming trips, and a competitive audit of 14 platforms including Google Trips (defunct), TripAdvisor, and Notion-based planning templates.</p>
+    <p>The diary study was the most valuable input. Watching how people actually plan — the tabs they keep open, the notes they take, the Instagram saves they reference — made it clear that existing tools were solving the wrong problem. Nobody needed a better list of restaurants. They needed a way to hold their research together and make sense of it.</p>
+    <p>This reframe shifted the product strategy from "curated recommendations engine" to "personal trip canvas" — a surface where users could collect, organise, and sequence Meridian's content alongside their own notes and saves.</p>
+  </div>
+  <div class="tag-list">
+    <span class="tag">Diary Study × 6</span>
+    <span class="tag">User Interviews × 11</span>
+    <span class="tag">Competitive Audit × 14</span>
+    <span class="tag">Problem Reframing</span>
+    <span class="tag">MVP Scoping</span>
+    <span class="tag">Information Architecture</span>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">03 — Key Design Work</p>
+  <h2 class="content-title">The canvas model and preference system</h2>
+  <div class="two-col">
+    <div class="content-body">
+      <p><strong style="font-weight:500">The Trip Canvas.</strong> The central metaphor was a spatial canvas — a day-by-day grid where users could drag and drop saved places, add personal notes, and see their itinerary take shape visually. Unlike a list-based planner, the canvas gave a sense of spatial rhythm: mornings, afternoons, evenings, travel time.</p>
+      <p>I ran four rounds of prototype testing with the canvas interaction model, iterating on the drag-and-drop UX until it felt genuinely fluid rather than forced.</p>
+    </div>
+    <div class="content-body">
+      <p><strong style="font-weight:500">The Preference Engine.</strong> Rather than a lengthy onboarding quiz, I designed a progressive preference system: the first time a user saved a place, they'd see a small set of contextual tags — "quiet", "good for solo", "worth a queue". Over time, the system used these implicit signals to surface better recommendations.</p>
+      <p>This approach meant new users got immediate value without needing to invest upfront, while returning users benefited from an experience that improved with use.</p>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <p class="content-eyebrow">04 — Results</p>
+  <h2 class="content-title">From guide to destination</h2>
+  <div class="insight-grid">
+    <div class="insight-card"><span class="insight-num">3.2×</span><span class="insight-label">Increase in average session depth post-launch</span></div>
+    <div class="insight-card"><span class="insight-num">68%</span><span class="insight-label">Of beta users created a second trip within 30 days</span></div>
+    <div class="insight-card"><span class="insight-num">12k</span><span class="insight-label">Curated place recommendations now accessible via the canvas</span></div>
+  </div>
+  <div class="content-body" style="margin-top:32px">
+    <p>The platform launched to a waitlist of 4,200 users in autumn 2021. The co-founders described it as the first time the Meridian content library felt "alive" rather than static. The progressive preference system proved particularly sticky — users who interacted with three or more preference tags had a 2.8× higher 90-day retention rate than those who didn't.</p>
+  </div>
+</div>
+
+<div class="next-project">
+  <div>
+    <p class="next-label">Back to Start</p>
+    <h3 class="next-title">Nexus Financial Platform</h3>
+  </div>
+  <a href="case-nexus.html" class="next-link">View Case Study →</a>
+</div>
+
+<footer>
+  <span class="footer-logo">jd.</span>
+  <span class="footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
+  <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email →</a></div>
+</footer>
+</body>
+</html>
