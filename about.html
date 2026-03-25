@@ -3,35 +3,428 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Bertha Chan</title>
+<title>About — Jordan Dahl, Product & UX Designer</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ── ABOUT PAGE LOCAL STYLES ── */
+
+  /* Hero split layout */
+  .about-hero {
+    padding: 130px var(--page-pad) 80px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-hero-left {}
+  .about-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-ui);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .about-name {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .about-location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .about-location-pin {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .about-hero-right {
+    padding-top: 24px;
+  }
+  .about-bio p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+  }
+  .about-bio p:last-child { margin-bottom: 0; }
+  .about-bio strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* Divider rule */
+  .about-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  /* MILESTONES / EXPERIENCE */
+  .milestones-section {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 70px var(--page-pad);
+  }
+  .milestones-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-ui);
+    margin-bottom: 44px;
+    display: block;
+  }
+  .milestone-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border-light);
+    align-items: start;
+  }
+  .milestone-row:last-child { border-bottom: 1px solid var(--border-light); }
+  .milestone-date {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-subtle);
+    letter-spacing: 0.02em;
+    padding-top: 3px;
+  }
+  .milestone-body {}
+  .milestone-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .milestone-company {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-subtle);
+    margin-bottom: 10px;
+  }
+  .milestone-desc {
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  /* TOOLKIT */
+  .toolkit-section {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--page-pad) 80px;
+  }
+  .toolkit-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-ui);
+    margin-bottom: 28px;
+    display: block;
+  }
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .toolkit-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 22px 28px;
+  }
+  .toolkit-circle {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    margin-bottom: 18px;
+  }
+  .toolkit-circle.green  { background: var(--green); }
+  .toolkit-circle.slate  { background: var(--slate); }
+  .toolkit-circle.cream  { background: var(--cream); border: 1px solid var(--border); }
+  .toolkit-circle.khaki  { background: var(--khaki); }
+  .toolkit-category {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .toolkit-items {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    list-style: none;
+  }
+  .toolkit-items li {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* DARK PHILOSOPHY BANNER */
+  .philosophy-banner {
+    background: #1a1a18;
+    padding: 100px var(--page-pad);
+    position: relative;
+    overflow: hidden;
+  }
+  .philosophy-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    position: relative;
+  }
+  .philosophy-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+    display: block;
+  }
+  .philosophy-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.3;
+    color: #f0ede6;
+    max-width: 760px;
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+  .philosophy-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .philosophy-tag-icon {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .philosophy-meta {
+    position: absolute;
+    bottom: 0; right: 0;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ABOUT PAGE FOOTER */
+  .about-footer {
+    border-top: 1px solid var(--border);
+    padding: 22px var(--page-pad);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .about-footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; font-weight: 400; color: var(--text); }
+  .about-footer-copy { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-subtle); }
+  .about-footer-links { display: flex; gap: 24px; }
+  .about-footer-links a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-ui); text-decoration: none; transition: color .2s; }
+  .about-footer-links a:hover { color: var(--text); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; gap: 48px; padding: 110px 24px 60px; }
+    .about-name { font-size: clamp(3.5rem, 14vw, 6rem); }
+    .toolkit-grid { grid-template-columns: 1fr 1fr; }
+    .philosophy-banner { padding: 70px 24px; }
+    .milestones-section, .toolkit-section { padding-left: 24px; padding-right: 24px; }
+    .milestone-row { grid-template-columns: 90px 1fr; gap: 24px; }
+    .about-footer { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+  @media (max-width: 580px) {
+    .toolkit-grid { grid-template-columns: 1fr; }
+    .milestone-row { grid-template-columns: 1fr; gap: 8px; }
+    .milestone-date { font-size: 0.88rem; }
+  }
+</style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="site-nav">
-  <a href="index.html" class="nav-logo">bc</a>
+  <a href="index.html" class="nav-logo">jd.</a>
   <div class="nav-links">
     <a href="index.html#work">Work</a>
     <a href="index.html#process">Process</a>
-    <a href="about.html">About</a>
-    <a href="https://www.linkedin.com/in/berthaclchan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="about.html" aria-current="page" style="color:var(--text)">About</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<header class="cs-hero">
-  <div class="cs-hero-meta">
-    <span class="cs-category">Product &amp; Service Design</span>
-    <span class="cs-meta-dot">·</span>
-    <span class="cs-category">10+ Years Experience</span>
+<!-- ── HERO: NAME + BIO ── -->
+<section class="about-hero">
+  <div class="about-hero-left">
+    <span class="about-eyebrow">Designer Profile</span>
+    <h1 class="about-name">JORDAN<br>DAHL.</h1>
+    <div class="about-location">
+      <span class="about-location-pin">J</span>
+      <span>Based in Brooklyn, NY</span>
+    </div>
   </div>
-  <h1 class="cs-hero-title">Bertha Chan</h1>
-  <p class="cs-hero-summary">Product and Service Designer working at the intersection of user needs, business goals, and systems thinking. Focused on creating clear, thoughtful experiences across digital and service touchpoints.</p>
-</header>
 
-<footer class="site-footer">
-  <span class="footer-logo">bc</span>
-  <span class="footer-copy">All Rights Reserved</span>
-  <div class="footer-links"><a href="https://www.linkedin.com/in/berthaclchan/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+  <div class="about-hero-right">
+    <div class="about-bio">
+      <p>I am a Product Designer specializing in building scalable design systems and high-fidelity prototypes for complex digital ecosystems. With nearly a decade of experience, I bridge the gap between creative expression and technical logic.</p>
+      <p>My approach is rooted in <strong>systems thinking</strong>. I believe that a product's beauty is only as deep as its structural integrity. I thrive in environments where data-heavy challenges meet human-centric solutions.</p>
+      <p>When I'm not pushing pixels in Figma, I'm likely documenting local architectural patterns or refining my workflow automation scripts.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="about-divider">
+
+<!-- ── MILESTONES / EXPERIENCE ── -->
+<section class="milestones-section">
+  <span class="milestones-eyebrow">Milestones</span>
+
+  <div class="milestone-row">
+    <div class="milestone-date">2021—24</div>
+    <div class="milestone-body">
+      <div class="milestone-title">Senior Product Designer</div>
+      <div class="milestone-company">Nexus Financial &nbsp;·&nbsp; Lead Designer</div>
+      <p class="milestone-desc">Architected the core design system used across 4 product verticals, reducing dev handoff friction by 30%. Led the end-to-end redesign of the international money transfer flow, increasing completed transfers by 28%.</p>
+    </div>
+  </div>
+
+  <div class="milestone-row">
+    <div class="milestone-date">2018—21</div>
+    <div class="milestone-body">
+      <div class="milestone-title">UX/UI Designer</div>
+      <div class="milestone-company">Studio Carbon &nbsp;·&nbsp; Digital Agency</div>
+      <p class="milestone-desc">Delivered end-to-end mobile and web solutions for clients ranging from Series A startups to Fortune 500s. Ran discovery sprints, interaction design, and design-to-dev handoffs across 11 concurrent projects.</p>
+    </div>
+  </div>
+
+  <div class="milestone-row">
+    <div class="milestone-date">2016—18</div>
+    <div class="milestone-body">
+      <div class="milestone-title">Visual Designer</div>
+      <div class="milestone-company">Aura E-Commerce &nbsp;·&nbsp; In-house</div>
+      <p class="milestone-desc">Evolved brand guidelines and designed high-conversion landing pages for the leading sustainable fashion marketplace. Increased homepage conversion rate by 22% through a visual hierarchy overhaul.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="about-divider">
+
+<!-- ── TOOLKIT & EXPERTISE ── -->
+<section class="toolkit-section" style="padding-top:60px;">
+  <span class="toolkit-eyebrow">Toolkit &amp; Expertise</span>
+  <div class="toolkit-grid">
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle green"></div>
+      <span class="toolkit-category">Design</span>
+      <ul class="toolkit-items">
+        <li>Figma / FigJam</li>
+        <li>Adobe Suite</li>
+        <li>ProtoPie</li>
+        <li>Framer</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle slate"></div>
+      <span class="toolkit-category">Systems</span>
+      <ul class="toolkit-items">
+        <li>Token Logic</li>
+        <li>Documentation</li>
+        <li>React / Tailwind</li>
+        <li>Storybook</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle cream"></div>
+      <span class="toolkit-category">Research</span>
+      <ul class="toolkit-items">
+        <li>User Interviews</li>
+        <li>A/B Testing</li>
+        <li>Hotjar / Mixpanel</li>
+        <li>Personas</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle khaki"></div>
+      <span class="toolkit-category">Strategy</span>
+      <ul class="toolkit-items">
+        <li>Product Vision</li>
+        <li>Stakeholder Sync</li>
+        <li>Service Design</li>
+        <li>Roadmapping</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DARK PHILOSOPHY BANNER ── -->
+<div class="philosophy-banner" id="contact">
+  <div class="philosophy-inner">
+    <span class="philosophy-eyebrow">Core Philosophy</span>
+    <blockquote class="philosophy-quote">
+      "Design is not the decoration of a surface, but the logical arrangement of components to facilitate human intent."
+    </blockquote>
+    <div class="philosophy-tag">
+      <span class="philosophy-tag-icon">+</span>
+      Simplicity through structure
+    </div>
+    <div class="philosophy-meta">[ethos_01] // principle_led_design</div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="about-footer">
+  <span class="about-footer-logo">jd.</span>
+  <span class="about-footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
+  <div class="about-footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">Email</a>
+  </div>
 </footer>
 
 </body>
