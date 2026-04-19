@@ -3,220 +3,429 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumina Health Dashboard — JD Portfolio</title>
+<title>About — Jordan Dahl, Product & UX Designer</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ── ABOUT PAGE LOCAL STYLES ── */
+
+  /* Hero split layout */
+  .about-hero {
+    padding: 130px var(--page-pad) 80px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-hero-left {}
+  .about-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-ui);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .about-name {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .about-location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .about-location-pin {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .about-hero-right {
+    padding-top: 24px;
+  }
+  .about-bio p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+  }
+  .about-bio p:last-child { margin-bottom: 0; }
+  .about-bio strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* Divider rule */
+  .about-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  /* MILESTONES / EXPERIENCE */
+  .milestones-section {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 70px var(--page-pad);
+  }
+  .milestones-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-ui);
+    margin-bottom: 44px;
+    display: block;
+  }
+  .milestone-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border-light);
+    align-items: start;
+  }
+  .milestone-row:last-child { border-bottom: 1px solid var(--border-light); }
+  .milestone-date {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-subtle);
+    letter-spacing: 0.02em;
+    padding-top: 3px;
+  }
+  .milestone-body {}
+  .milestone-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .milestone-company {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-subtle);
+    margin-bottom: 10px;
+  }
+  .milestone-desc {
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  /* TOOLKIT */
+  .toolkit-section {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--page-pad) 80px;
+  }
+  .toolkit-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-ui);
+    margin-bottom: 28px;
+    display: block;
+  }
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .toolkit-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 22px 28px;
+  }
+  .toolkit-circle {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    margin-bottom: 18px;
+  }
+  .toolkit-circle.green  { background: var(--green); }
+  .toolkit-circle.slate  { background: var(--slate); }
+  .toolkit-circle.cream  { background: var(--cream); border: 1px solid var(--border); }
+  .toolkit-circle.khaki  { background: var(--khaki); }
+  .toolkit-category {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .toolkit-items {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    list-style: none;
+  }
+  .toolkit-items li {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* DARK PHILOSOPHY BANNER */
+  .philosophy-banner {
+    background: #1a1a18;
+    padding: 100px var(--page-pad);
+    position: relative;
+    overflow: hidden;
+  }
+  .philosophy-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    position: relative;
+  }
+  .philosophy-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+    display: block;
+  }
+  .philosophy-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.3;
+    color: #f0ede6;
+    max-width: 760px;
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+  .philosophy-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .philosophy-tag-icon {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .philosophy-meta {
+    position: absolute;
+    bottom: 0; right: 0;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ABOUT PAGE FOOTER */
+  .about-footer {
+    border-top: 1px solid var(--border);
+    padding: 22px var(--page-pad);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .about-footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; font-weight: 400; color: var(--text); }
+  .about-footer-copy { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-subtle); }
+  .about-footer-links { display: flex; gap: 24px; }
+  .about-footer-links a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-ui); text-decoration: none; transition: color .2s; }
+  .about-footer-links a:hover { color: var(--text); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; gap: 48px; padding: 110px 24px 60px; }
+    .about-name { font-size: clamp(3.5rem, 14vw, 6rem); }
+    .toolkit-grid { grid-template-columns: 1fr 1fr; }
+    .philosophy-banner { padding: 70px 24px; }
+    .milestones-section, .toolkit-section { padding-left: 24px; padding-right: 24px; }
+    .milestone-row { grid-template-columns: 90px 1fr; gap: 24px; }
+    .about-footer { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+  @media (max-width: 580px) {
+    .toolkit-grid { grid-template-columns: 1fr; }
+    .milestone-row { grid-template-columns: 1fr; gap: 8px; }
+    .milestone-date { font-size: 0.88rem; }
+  }
+</style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="site-nav">
-  <a href="index.html" class="nav-logo">bc</a>
-  <a href="index.html#work" class="nav-back">Back to Portfolio</a>
+  <a href="index.html" class="nav-logo">jd.</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#process">Process</a>
+    <a href="about.html" aria-current="page" style="color:var(--text)">About</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<header class="cs-hero">
-  <div class="cs-hero-meta">
-    <span class="cs-category">UX Research</span>
-    <span class="cs-meta-dot">·</span>
-    <span class="cs-category">Data Visualisation</span>
-    <span class="cs-meta-dot">·</span>
-    <span class="cs-category">2022</span>
-  </div>
-  <h1 class="cs-title">Lumina Health<br>Dashboard</h1>
-  <p class="prose" style="max-width:600px;margin-bottom:0">Designing a patient-facing chronic illness management dashboard that translates complex clinical data into actionable, emotionally considered insights.</p>
-  <div class="cs-summary-grid">
-    <div class="cs-summary-cell"><span class="cs-summary-label">System Architecture</span><span class="cs-summary-value">Patient-Centred Data Model</span></div>
-    <div class="cs-summary-cell"><span class="cs-summary-label">Typical Duration</span><span class="cs-summary-value">7 Months End-to-End</span></div>
-    <div class="cs-summary-cell"><span class="cs-summary-label">Role</span><span class="cs-summary-value">UX Lead &amp; Researcher</span></div>
-    <div class="cs-summary-cell"><span class="cs-summary-label">Outcome</span><span class="cs-summary-value accent">+37pp comprehension</span></div>
-  </div>
-</header>
-
-<div class="cs-banner cs-banner-lumina" aria-hidden="true">
-  <div style="width:60%;max-width:480px;background:rgba(255,255,255,0.1);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:10px;">
-    <div style="display:flex;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);"></div><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);"></div></div>
-    <div style="height:8px;width:35%;background:rgba(255,255,255,0.35);border-radius:2px;"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-      <div style="height:56px;background:rgba(255,255,255,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;"><div style="width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);"></div></div>
-      <div style="height:56px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
-      <div style="height:56px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
+<!-- ── HERO: NAME + BIO ── -->
+<section class="about-hero">
+  <div class="about-hero-left">
+    <span class="about-eyebrow">Designer Profile</span>
+    <h1 class="about-name">JORDAN<br>DAHL.</h1>
+    <div class="about-location">
+      <span class="about-location-pin">J</span>
+      <span>Based in Brooklyn, NY</span>
     </div>
-    <div style="height:80px;background:rgba(255,255,255,0.15);border-radius:4px;"></div>
+  </div>
+
+  <div class="about-hero-right">
+    <div class="about-bio">
+      <p>I am a Product Designer specializing in building scalable design systems and high-fidelity prototypes for complex digital ecosystems. With nearly a decade of experience, I bridge the gap between creative expression and technical logic.</p>
+      <p>My approach is rooted in <strong>systems thinking</strong>. I believe that a product's beauty is only as deep as its structural integrity. I thrive in environments where data-heavy challenges meet human-centric solutions.</p>
+      <p>When I'm not pushing pixels in Figma, I'm likely documenting local architectural patterns or refining my workflow automation scripts.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="about-divider">
+
+<!-- ── MILESTONES / EXPERIENCE ── -->
+<section class="milestones-section">
+  <span class="milestones-eyebrow">Milestones</span>
+
+  <div class="milestone-row">
+    <div class="milestone-date">2021—24</div>
+    <div class="milestone-body">
+      <div class="milestone-title">Senior Product Designer</div>
+      <div class="milestone-company">Nexus Financial &nbsp;·&nbsp; Lead Designer</div>
+      <p class="milestone-desc">Architected the core design system used across 4 product verticals, reducing dev handoff friction by 30%. Led the end-to-end redesign of the international money transfer flow, increasing completed transfers by 28%.</p>
+    </div>
+  </div>
+
+  <div class="milestone-row">
+    <div class="milestone-date">2018—21</div>
+    <div class="milestone-body">
+      <div class="milestone-title">UX/UI Designer</div>
+      <div class="milestone-company">Studio Carbon &nbsp;·&nbsp; Digital Agency</div>
+      <p class="milestone-desc">Delivered end-to-end mobile and web solutions for clients ranging from Series A startups to Fortune 500s. Ran discovery sprints, interaction design, and design-to-dev handoffs across 11 concurrent projects.</p>
+    </div>
+  </div>
+
+  <div class="milestone-row">
+    <div class="milestone-date">2016—18</div>
+    <div class="milestone-body">
+      <div class="milestone-title">Visual Designer</div>
+      <div class="milestone-company">Aura E-Commerce &nbsp;·&nbsp; In-house</div>
+      <p class="milestone-desc">Evolved brand guidelines and designed high-conversion landing pages for the leading sustainable fashion marketplace. Increased homepage conversion rate by 22% through a visual hierarchy overhaul.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="about-divider">
+
+<!-- ── TOOLKIT & EXPERTISE ── -->
+<section class="toolkit-section" style="padding-top:60px;">
+  <span class="toolkit-eyebrow">Toolkit &amp; Expertise</span>
+  <div class="toolkit-grid">
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle green"></div>
+      <span class="toolkit-category">Design</span>
+      <ul class="toolkit-items">
+        <li>Figma / FigJam</li>
+        <li>Adobe Suite</li>
+        <li>ProtoPie</li>
+        <li>Framer</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle slate"></div>
+      <span class="toolkit-category">Systems</span>
+      <ul class="toolkit-items">
+        <li>Token Logic</li>
+        <li>Documentation</li>
+        <li>React / Tailwind</li>
+        <li>Storybook</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle cream"></div>
+      <span class="toolkit-category">Research</span>
+      <ul class="toolkit-items">
+        <li>User Interviews</li>
+        <li>A/B Testing</li>
+        <li>Hotjar / Mixpanel</li>
+        <li>Personas</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-circle khaki"></div>
+      <span class="toolkit-category">Strategy</span>
+      <ul class="toolkit-items">
+        <li>Product Vision</li>
+        <li>Stakeholder Sync</li>
+        <li>Service Design</li>
+        <li>Roadmapping</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DARK PHILOSOPHY BANNER ── -->
+<div class="philosophy-banner" id="contact">
+  <div class="philosophy-inner">
+    <span class="philosophy-eyebrow">Core Philosophy</span>
+    <blockquote class="philosophy-quote">
+      "Design is not the decoration of a surface, but the logical arrangement of components to facilitate human intent."
+    </blockquote>
+    <div class="philosophy-tag">
+      <span class="philosophy-tag-icon">+</span>
+      Simplicity through structure
+    </div>
+    <div class="philosophy-meta">[ethos_01] // principle_led_design</div>
   </div>
 </div>
 
-<div class="cs-body">
-
-  <nav class="cs-toc" aria-label="Page sections">
-    <a href="#s-discovery"    class="cs-toc-item active" data-section="s-discovery"><span class="cs-toc-num">01</span><span class="cs-toc-label">Discovery</span></a>
-    <a href="#s-architecture" class="cs-toc-item" data-section="s-architecture"><span class="cs-toc-num">02</span><span class="cs-toc-label">Architecture</span></a>
-    <a href="#s-interaction"  class="cs-toc-item" data-section="s-interaction"><span class="cs-toc-num">03</span><span class="cs-toc-label">Interaction</span></a>
-    <a href="#s-validation"   class="cs-toc-item" data-section="s-validation"><span class="cs-toc-num">04</span><span class="cs-toc-label">Validation</span></a>
-  </nav>
-
-  <main class="cs-content">
-
-    <section class="cs-section" id="s-discovery">
-      <span class="cs-step-num" aria-hidden="true">01</span>
-      <h2 class="cs-step-title">Discovery &amp; Alignment</h2>
-      <p class="cs-step-intro">Every project starts with radical honesty. For Lumina, that meant confronting a difficult truth: data without emotional context can cause more harm than it prevents.</p>
-
-      <div class="diagram-card">
-        <div class="diagram-label-row"><span class="diagram-tag">Stakeholder Matrix</span></div>
-        <div class="diagram-card-inner">
-          <div class="stakeholder-matrix">
-            <div class="sm-item"><div class="sm-circle business"></div><div class="sm-circle-label">Clinician</div></div>
-            <div class="sm-item"><div class="sm-circle user-need"></div><div class="sm-circle-label">Patient Need</div></div>
-            <div class="sm-item"><div class="sm-circle tech-logic"></div><div class="sm-circle-label">Data Model</div></div>
-          </div>
-          <div class="sm-sweet-spot">The Sweet Spot &nbsp;/</div>
-        </div>
-      </div>
-
-      <blockquote class="quote-callout">
-        <span class="quote-callout-label">Research Insight</span>
-        <p class="quote-callout-text">In 22 interviews, patients consistently said numbers felt threatening and graphs felt clinical. Most defaulted to asking their GP what the data meant, rather than interpreting it themselves.</p>
-      </blockquote>
-
-      <div class="two-col" style="margin-top:28px">
-        <div class="prose">
-          <p>I conducted 22 in-depth interviews with patients across different literacy levels, ages, and conditions. Sessions were deliberately slow-paced with open-ended prompts: "Tell me about a time you felt confused by your health data."</p>
-          <p>I also ran a card sort with 16 participants to understand how patients naturally grouped health concepts — leading to a revised IA that matched patient mental models rather than clinical categories.</p>
-        </div>
-        <div class="prose">
-          <p>Every design decision was reviewed through both a usability lens and an emotional one. I worked with two clinical advisors throughout to ensure medical accuracy and appropriate framing of all health trends.</p>
-          <p>All research was synthesised in Dovetail, producing a 34-page report that became a foundational document for product and clinical teams.</p>
-        </div>
-      </div>
-
-      <div class="tag-list">
-        <span class="tag">In-depth Interviews × 22</span>
-        <span class="tag">Card Sorting × 16</span>
-        <span class="tag">Accessibility Research</span>
-        <span class="tag">Clinical Collaboration</span>
-        <span class="tag">Plain Language Audit</span>
-      </div>
-    </section>
-
-    <section class="cs-section" id="s-architecture">
-      <span class="cs-step-num" aria-hidden="true">02</span>
-      <h2 class="cs-step-title">Information Architecture</h2>
-      <p class="cs-step-intro">Defining the skeletal structure. Every metric shown in relation to a goal or trend — never in isolation. Structure before visuals.</p>
-
-      <div class="diagram-card">
-        <div class="arch-diagram-grid">
-          <div>
-            <div class="diagram-label-row"><span class="diagram-tag">Dashboard Structure</span></div>
-            <div class="sitemap-block">
-              <div class="sitemap-row">Overview</div>
-              <div class="sitemap-row indent">Weekly Trend</div>
-              <div class="sitemap-row indent">Goal Progress</div>
-              <div class="sitemap-row">Readings</div>
-              <div class="sitemap-row indent">Blood Pressure</div>
-              <div class="sitemap-row indent">Activity</div>
-              <div class="sitemap-row">Next Steps</div>
-            </div>
-          </div>
-          <div>
-            <div class="diagram-label-row"><span class="diagram-tag">Insight Flow</span></div>
-            <div class="userflow-block">
-              <div class="uf-box" style="width:90px;"></div>
-              <div class="uf-arrow">▼</div>
-              <div class="uf-box pill" style="width:90px;"></div>
-              <div class="uf-arrow">▼</div>
-              <div class="uf-box" style="width:90px;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prose">
-        <p>Three principles governed every architectural decision: context over numbers (every metric in relation to a goal), calm confidence (soft colour ramps, plain language, no alarming red states), and action over reporting (every insight paired with a suggested next step).</p>
-      </div>
-    </section>
-
-    <section class="cs-section" id="s-interaction">
-      <span class="cs-step-num" aria-hidden="true">03</span>
-      <h2 class="cs-step-title">Interaction &amp; Visuals</h2>
-      <p class="cs-step-intro">Building the high-fidelity interface with a calm, considered visual language. Accessibility and emotional safety were the primary constraints.</p>
-
-      <div class="diagram-card">
-        <div class="diagram-label-row"><span class="diagram-tag">Component Library</span></div>
-        <div class="diagram-card-inner">
-          <div class="component-card">
-            <div class="component-swatches">
-              <div style="height:14px;background:var(--green);border-radius:2px;width:100%;margin-bottom:6px;"></div>
-              <div style="height:14px;background:var(--khaki);border-radius:2px;width:80%;margin-bottom:6px;"></div>
-              <div style="height:14px;background:var(--cream);border-radius:2px;width:55%;border:1px solid var(--border);"></div>
-              <div class="comp-circles" style="margin-top:10px">
-                <div class="comp-circle c1"></div>
-                <div class="comp-circle c2"></div>
-                <div class="comp-circle" style="background:var(--khaki);width:30px;height:30px;border-radius:50%;"></div>
-              </div>
-            </div>
-            <div class="component-text-block">
-              <div class="comp-title">Calm Colour System</div>
-              <p class="comp-body">Colour-blind safe palettes, soft gradients instead of binary red/green, and plain language labels replace clinical jargon throughout. All tokens WCAG AA compliant.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="insight-grid">
-        <div class="insight-card"><span class="insight-num">800</span><span class="insight-label">Beta patients in initial cohort</span></div>
-        <div class="insight-card"><span class="insight-num">+37pp</span><span class="insight-label">Patient self-reported data comprehension</span></div>
-        <div class="insight-card"><span class="insight-num">★ 2022</span><span class="insight-label">Healthcare UX Award — Patient Experience</span></div>
-      </div>
-    </section>
-
-    <section class="cs-section" id="s-validation">
-      <span class="cs-step-num" aria-hidden="true">04</span>
-      <h2 class="cs-step-title">Validation &amp; Testing</h2>
-      <p class="cs-step-intro">Proving the hypothesis. Usability testing with patients across literacy levels, with a specific focus on emotional response alongside task success.</p>
-
-      <div class="metrics-card">
-        <div class="metric-cell">
-          <span class="metric-tag">Comprehension Score</span>
-          <span class="metric-value">71%</span>
-          <span class="metric-label">vs 34% Baseline</span>
-        </div>
-        <div class="metric-cell">
-          <span class="metric-tag">Follow-up Calls</span>
-          <span class="metric-value">−28%</span>
-          <span class="metric-label">Clinical Team Reduction</span>
-        </div>
-      </div>
-
-      <blockquote class="quote-callout">
-        <span class="quote-callout-label">The Feedback Loop</span>
-        <p class="quote-callout-text">Testing isn't a final hurdle; it's a recurring check-in. For healthcare, the stakes of getting it wrong are higher — so we tested at every stage, including with clinical reviewers after every major iteration.</p>
-      </blockquote>
-    </section>
-
-  </main>
-</div>
-
-<div style="border-top:1px solid var(--border);max-width:var(--content-max);margin:0 auto;padding:50px var(--page-pad);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
-  <div><span class="next-label">Next Project</span><div class="next-title">Meridian Travel Platform</div></div>
-  <a href="case-meridian.html" class="btn">View Case Study →</a>
-</div>
-
-<footer class="site-footer">
-  <span class="footer-logo">bc</span>
-  <a href="case-meridian.html" class="cs-footer-next">Next Section →</a>
+<!-- ── FOOTER ── -->
+<footer class="about-footer">
+  <span class="about-footer-logo">jd.</span>
+  <span class="about-footer-copy">[sys_design_portfolio_v1] // All Rights Reserved</span>
+  <div class="about-footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">Email</a>
+  </div>
 </footer>
 
-<script>
-const sections = document.querySelectorAll('.cs-section');
-const tocItems = document.querySelectorAll('.cs-toc-item');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      tocItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
-    }
-  });
-}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-sections.forEach(s => observer.observe(s));
-</script>
 </body>
 </html>

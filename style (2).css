@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Increasing Completed Transfers by 28% — JD Portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">bc</a>
+  <a href="index.html#work" class="nav-back">Back to Portfolio</a>
+</nav>
+
+<!-- PAGE HERO -->
+<header class="cs-hero">
+  <div class="cs-hero-meta">
+    <span class="cs-category">UX/UI</span>
+    <span class="cs-meta-dot">·</span>
+    <span class="cs-category">Fintech</span>
+    <span class="cs-meta-dot">·</span>
+    <span class="cs-category">2023</span>
+  </div>
+  <h1 class="cs-title">Increasing completed<br>transfers by 28%</h1>
+  <p class="prose" style="max-width:640px;margin-bottom:0;font-size:1rem;">A ground-up redesign of the international money transfer flow for a B2B financial platform — eliminating information overload, surfacing critical fee transparency, and rebuilding user trust at every decision point.</p>
+
+  <div class="cs-summary-grid">
+    <div class="cs-summary-cell">
+      <span class="cs-summary-label">System Architecture</span>
+      <span class="cs-summary-value">Modular Design Framework V2.0</span>
+    </div>
+    <div class="cs-summary-cell">
+      <span class="cs-summary-label">Typical Duration</span>
+      <span class="cs-summary-value">8—12 Weeks Per Cycle</span>
+    </div>
+    <div class="cs-summary-cell">
+      <span class="cs-summary-label">Role</span>
+      <span class="cs-summary-value">Lead Product Designer</span>
+    </div>
+    <div class="cs-summary-cell">
+      <span class="cs-summary-label">Outcome</span>
+      <span class="cs-summary-value accent">+28% completed transfers</span>
+    </div>
+  </div>
+</header>
+
+<!-- FULL-WIDTH BANNER -->
+<div class="cs-banner cs-banner-nexus" aria-hidden="true">
+  <div style="width:65%;max-width:580px;background:rgba(240,237,230,0.14);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:10px;">
+    <div style="display:flex;gap:8px;margin-bottom:4px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.5);"></div>
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+    </div>
+    <div style="height:9px;width:38%;background:rgba(255,255,255,0.5);border-radius:2px;"></div>
+    <div style="height:52px;background:rgba(255,255,255,0.3);border-radius:3px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="height:36px;background:rgba(255,255,255,0.25);border-radius:3px;"></div>
+      <div style="height:36px;background:rgba(255,255,255,0.25);border-radius:3px;"></div>
+    </div>
+    <div style="height:9px;width:55%;background:rgba(255,255,255,0.3);border-radius:2px;margin-top:4px;"></div>
+    <div style="height:9px;width:70%;background:rgba(255,255,255,0.2);border-radius:2px;"></div>
+  </div>
+</div>
+
+<!-- BODY: sticky TOC + scrolling content -->
+<div class="cs-body">
+
+  <!-- LEFT: sticky TOC -->
+  <nav class="cs-toc" aria-label="Page sections">
+    <a href="#s-discovery"    class="cs-toc-item active" data-section="s-discovery">
+      <span class="cs-toc-num">01</span>
+      <span class="cs-toc-label">Discovery</span>
+    </a>
+    <a href="#s-architecture" class="cs-toc-item" data-section="s-architecture">
+      <span class="cs-toc-num">02</span>
+      <span class="cs-toc-label">Architecture</span>
+    </a>
+    <a href="#s-interaction"  class="cs-toc-item" data-section="s-interaction">
+      <span class="cs-toc-num">03</span>
+      <span class="cs-toc-label">Interaction</span>
+    </a>
+    <a href="#s-validation"   class="cs-toc-item" data-section="s-validation">
+      <span class="cs-toc-num">04</span>
+      <span class="cs-toc-label">Validation</span>
+    </a>
+  </nav>
+
+  <!-- RIGHT: scrolling content -->
+  <main class="cs-content">
+
+    <!-- ═══ 01 DISCOVERY ═══ -->
+    <section class="cs-section" id="s-discovery">
+      <span class="cs-step-num" aria-hidden="true">01</span>
+      <h2 class="cs-step-title">Discovery &amp; Alignment</h2>
+      <p class="cs-step-intro">Every project starts with radical honesty. We strip away assumptions to find the actual friction points between business goals and user needs.</p>
+
+      <!-- Design Impact -->
+      <span class="cs-eyebrow">Design Impact</span>
+      <div class="insight-grid-2">
+        <div class="insight-card">
+          <span class="insight-num">+28%</span>
+          <span class="insight-label">Increase in completed transfers after redesign launch</span>
+        </div>
+        <div class="insight-card">
+          <span class="insight-num">−48%</span>
+          <span class="insight-label">Drop in mid-flow abandonment rate</span>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Using data to identify the problem -->
+      <h3 class="cs-subhead">Using data to identify the problem areas</h3>
+      <div class="prose">
+        <p>Initial analytics showed a significant drop-off at the transfer confirmation screen, but the numbers alone didn't explain <em>why</em>. I used a combination of FullStory session recordings, funnel analysis, and exit surveys to triangulate the cause.</p>
+        <p>Three patterns emerged immediately:</p>
+        <ul>
+          <li>Users were pausing and scrolling back repeatedly before confirming — a sign of unresolved uncertainty, not confusion about the UI itself.</li>
+          <li>Fee breakdowns were buried below the fold on the confirmation screen, meaning most users never saw the final cost before committing.</li>
+          <li>The exchange rate display changed between the entry screen and confirmation, creating a perceived inconsistency that eroded trust.</li>
+        </ul>
+      </div>
+
+      <!-- Quote -->
+      <blockquote class="quote-callout" style="margin-top:28px;">
+        <span class="quote-callout-label">User Feedback — Exit Survey, May 2023</span>
+        <p class="quote-callout-text">"It is not transparent as to what the fees are or who charged them. It's a guessing game and I sometimes don't know where to find them."</p>
+        <span class="quote-callout-attr">— Card feedback from a user study, 2023</span>
+      </blockquote>
+
+      <div class="wireframe-grid-2" style="margin-top:28px;">
+        <div class="wireframe-card">
+          <div class="wf-bar short"></div>
+          <div class="wf-bar med"></div>
+          <div class="wf-block blue"></div>
+          <div class="wf-bar short"></div>
+        </div>
+        <div class="wireframe-card">
+          <div class="wf-bar full"></div>
+          <div class="wf-grid">
+            <div class="wf-cell"></div>
+            <div class="wf-cell"></div>
+            <div class="wf-cell"></div>
+            <div class="wf-cell"></div>
+          </div>
+          <div class="wf-bar med"></div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- But research tells the full story -->
+      <h3 class="cs-subhead">But, research tells us the full story</h3>
+      <div class="two-col">
+        <div class="prose">
+          <p>Data surfaces what is happening. Research explains why. I ran 12 moderated user interviews with existing customers across the UK, Germany, and the UAE — focusing on their mental model of international transfers and what "trust" meant to them in a financial context.</p>
+          <p>The interviews revealed that users approached transfers with a pre-existing anxiety about hidden costs — shaped by years of bad experiences with legacy banking. Our platform wasn't the cause, but it wasn't actively countering that fear either.</p>
+        </div>
+        <div class="prose">
+          <p>A journey mapping workshop with the product and compliance teams helped surface the business constraints: certain fee disclosures were required at specific flow stages by regulation. The design challenge was making mandatory information feel like a feature, not a legal footnote.</p>
+          <p>I synthesised all research into a single "friction map" — a visual overlay of the existing flow annotated with user emotion, drop-off data, and regulatory requirements at each step. This became the single source of truth for the redesign brief.</p>
+        </div>
+      </div>
+
+      <!-- Journey map placeholder -->
+      <div class="diagram-card" style="margin-top:28px;">
+        <div class="diagram-label-row"><span class="diagram-tag">Journey Map — Transfer Flow</span></div>
+        <div style="background:#fff;border-radius:4px;padding:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:end;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <div style="height:50px;width:100%;background:var(--bg-inset);border-radius:3px;"></div>
+            <div style="height:7px;width:70%;background:var(--border);border-radius:2px;"></div>
+            <div style="height:7px;width:50%;background:var(--border);border-radius:2px;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <div style="height:40px;width:100%;background:#8fa4c4;opacity:0.35;border-radius:3px;"></div>
+            <div style="height:7px;width:70%;background:var(--border);border-radius:2px;"></div>
+            <div style="height:7px;width:50%;background:var(--border);border-radius:2px;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <div style="height:70px;width:100%;background:#c4956a;opacity:0.3;border-radius:3px;"></div>
+            <div style="height:7px;width:70%;background:var(--border);border-radius:2px;"></div>
+            <div style="height:7px;width:50%;background:var(--border);border-radius:2px;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <div style="height:90px;width:100%;background:#c4956a;opacity:0.5;border-radius:3px;"></div>
+            <div style="height:7px;width:70%;background:var(--border);border-radius:2px;"></div>
+            <div style="height:7px;width:50%;background:var(--border);border-radius:2px;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <div style="height:35px;width:100%;background:var(--green);opacity:0.4;border-radius:3px;"></div>
+            <div style="height:7px;width:70%;background:var(--border);border-radius:2px;"></div>
+            <div style="height:7px;width:50%;background:var(--border);border-radius:2px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second quote -->
+      <blockquote class="quote-callout" style="margin-top:24px;">
+        <span class="quote-callout-label">Research Insight</span>
+        <p class="quote-callout-text">"I'll go through a fake money transfer process without sending the money and be like, 'Oh, what is the information that I need,' can you, the company, send that to me?"</p>
+        <span class="quote-callout-attr">— Product Manager, TTTB</span>
+      </blockquote>
+
+      <div class="tag-list" style="margin-top:28px;">
+        <span class="tag">FullStory Analysis</span>
+        <span class="tag">User Interviews × 12</span>
+        <span class="tag">Funnel Analytics</span>
+        <span class="tag">Journey Mapping</span>
+        <span class="tag">Exit Surveys</span>
+        <span class="tag">Friction Mapping</span>
+        <span class="tag">Regulatory Review</span>
+      </div>
+    </section>
+
+    <!-- ═══ 02 ARCHITECTURE ═══ -->
+    <section class="cs-section" id="s-architecture">
+      <span class="cs-step-num" aria-hidden="true">02</span>
+      <h2 class="cs-step-title">Information Architecture</h2>
+      <p class="cs-step-intro">Defining the skeletal structure. We map the taxonomy and navigation logic before a single pixel of colour is applied.</p>
+
+      <!-- Prioritise efforts -->
+      <h3 class="cs-subhead">Prioritise design efforts in high-impact areas</h3>
+      <div class="prose">
+        <p>With a clear friction map in hand, I ran a prioritisation workshop with the PM and engineering leads to score each identified problem against impact (drop-off reduction potential) and feasibility (build complexity). Three problem areas rose to the top and formed the scope of the redesign.</p>
+      </div>
+
+      <!-- Three principles -->
+      <div class="principles-row">
+        <div class="principle-card">
+          <div class="principle-icon green"></div>
+          <div class="principle-title">Fee Transparency First</div>
+          <p class="principle-desc">Surface the complete fee breakdown — including third-party charges — at the point of entry, not just at confirmation. Users need to commit to a cost, not discover it.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-icon slate"></div>
+          <div class="principle-title">Consistent Rate Display</div>
+          <p class="principle-desc">Exchange rates must be locked and displayed identically across every step of the flow. Rate movement between screens creates perceived deception even when technically accurate.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-icon khaki"></div>
+          <div class="principle-title">Reduce Information Overload</div>
+          <p class="principle-desc">Compliance-required copy was overwhelming the key decision signals. Re-architect each screen around a single primary action with secondary information progressively disclosed.</p>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- New experience section -->
+      <h3 class="cs-subhead">New experience to reduce information overload</h3>
+      <div class="prose">
+        <p>The existing confirmation screen had 14 distinct pieces of information competing for attention at the same hierarchy level. I restructured it around a clear information hierarchy: what you're sending → what they receive → what it costs → confirm.</p>
+        <p>Each piece of compliance copy was reviewed with the legal team to identify the minimum required wording. Where possible, dense paragraphs were replaced with scannable structured data and progressive disclosure patterns.</p>
+      </div>
+
+      <div class="wireframe-grid" style="margin-top:24px;">
+        <div class="wireframe-card" style="aspect-ratio:3/4;">
+          <div class="wf-bar short"></div>
+          <div class="wf-bar full" style="height:10px;"></div>
+          <div class="wf-bar med"></div>
+          <div style="flex:1;display:grid;grid-template-rows:1fr 1fr;gap:6px;">
+            <div class="wf-block" style="opacity:0.4;"></div>
+            <div class="wf-block blue"></div>
+          </div>
+          <div class="wf-bar short"></div>
+        </div>
+        <div class="wireframe-card" style="aspect-ratio:3/4;">
+          <div class="wf-bar short"></div>
+          <div class="wf-block blue"></div>
+          <div class="wf-bar full" style="height:10px;"></div>
+          <div class="wf-bar med"></div>
+          <div class="wf-bar short"></div>
+        </div>
+        <div class="wireframe-card" style="aspect-ratio:3/4;">
+          <div class="wf-bar short"></div>
+          <div class="wf-bar med"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;">
+            <div class="wf-block" style="flex:0;height:16px;opacity:0.4;"></div>
+            <div class="wf-block" style="flex:0;height:16px;"></div>
+            <div class="wf-block" style="flex:0;height:16px;opacity:0.6;"></div>
+            <div class="wf-block blue" style="flex:1;"></div>
+          </div>
+          <div class="wf-bar short"></div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Problem area by problem area -->
+      <h3 class="cs-subhead">Problem area by problem area</h3>
+      <div class="prose">
+        <p>Rather than a full-screen redesign delivered in one release, I proposed a modular approach: redesign each problem area independently, ship it, validate it, then move to the next. This reduced risk, gave the team early wins to build confidence, and let us measure the impact of each change in isolation.</p>
+        <p>Each problem area had its own discovery sprint, design sprint, and validation round before handoff. The three areas shipped over 10 weeks.</p>
+      </div>
+
+      <!-- Sitemap -->
+      <div class="diagram-card" style="margin-top:24px;">
+        <div class="arch-diagram-grid">
+          <div>
+            <div class="diagram-label-row"><span class="diagram-tag">Flow Structure V.4</span></div>
+            <div class="sitemap-block">
+              <div class="sitemap-row">Initiate Transfer</div>
+              <div class="sitemap-row indent">Amount + Currency</div>
+              <div class="sitemap-row indent">Rate Lock Display</div>
+              <div class="sitemap-row">Recipient Details</div>
+              <div class="sitemap-row indent">Bank / Account Info</div>
+              <div class="sitemap-row">Review &amp; Fees</div>
+              <div class="sitemap-row indent">Fee Breakdown</div>
+              <div class="sitemap-row indent">Compliance Disclosure</div>
+              <div class="sitemap-row">Confirm &amp; Send</div>
+            </div>
+          </div>
+          <div>
+            <div class="diagram-label-row"><span class="diagram-tag">User Flow Logic</span></div>
+            <div class="userflow-block">
+              <div class="uf-box"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box pill"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box pill"></div>
+              <div class="uf-arrow">▼</div>
+              <div class="uf-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wireframe-grid" style="margin-top:16px;">
+        <div class="wireframe-card">
+          <div class="wf-bar short"></div>
+          <div class="wf-block"></div>
+          <div class="wf-bar med"></div>
+        </div>
+        <div class="wireframe-card">
+          <div class="wf-bar short"></div>
+          <div class="wf-block blue"></div>
+          <div class="wf-bar short"></div>
+        </div>
+        <div class="wireframe-card">
+          <div class="wf-bar short"></div>
+          <div class="wf-grid">
+            <div class="wf-cell"></div>
+            <div class="wf-cell"></div>
+          </div>
+          <div class="wf-bar med"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 03 INTERACTION ═══ -->
+    <section class="cs-section" id="s-interaction">
+      <span class="cs-step-num" aria-hidden="true">03</span>
+      <h2 class="cs-step-title">Interaction &amp; Visuals</h2>
+      <p class="cs-step-intro">Building the high-fidelity interface using a modular design system. Focus on accessibility, rhythm, and reducing cognitive load at every decision point.</p>
+
+      <h3 class="cs-subhead">Conclusion</h3>
+      <div class="prose">
+        <p>The redesign addressed each friction point systematically. The fee transparency change alone — moving the full fee breakdown to the amount entry screen — accounted for the largest single drop in mid-flow abandonment.</p>
+        <p>The consistent rate display fix was technically simpler but psychologically significant: users in follow-up testing explicitly commented that the platform felt "more honest" even though the underlying rates were identical to before.</p>
+        <p>Key decisions made during the interaction design phase:</p>
+        <ul>
+          <li>A persistent summary panel surfaced throughout the flow, keeping key numbers (amount, rate, fees, total) always visible without needing to scroll back.</li>
+          <li>Compliance text was moved into an inline expandable component — visible on request, not buried in a collapsed accordion at the bottom of the page.</li>
+          <li>A "rate lock" indicator with a countdown timer was introduced to address the anxiety around rate movement between screens.</li>
+          <li>The confirmation screen was rebuilt from 14 parallel information items to a 4-stage visual summary with clear hierarchy.</li>
+        </ul>
+      </div>
+
+      <h3 class="cs-subhead" style="margin-top:36px;">Final Designs</h3>
+
+      <div class="diagram-card">
+        <div class="diagram-label-row"><span class="diagram-tag">Transfer Details Page — Redesign</span></div>
+        <div style="background:#fff;border-radius:4px;padding:20px;display:grid;grid-template-columns:1fr 1.4fr;gap:16px;">
+          <!-- Left nav panel -->
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="height:9px;width:50%;background:var(--bg-inset);border-radius:2px;"></div>
+            <div style="height:7px;width:70%;background:var(--border-light);border-radius:2px;"></div>
+            <div style="height:7px;width:60%;background:var(--border-light);border-radius:2px;"></div>
+            <div style="height:7px;width:80%;background:var(--border-light);border-radius:2px;"></div>
+            <div style="margin-top:10px;height:7px;width:50%;background:var(--bg-inset);border-radius:2px;"></div>
+            <div style="height:7px;width:65%;background:var(--border-light);border-radius:2px;"></div>
+            <div style="height:7px;width:55%;background:var(--border-light);border-radius:2px;"></div>
+          </div>
+          <!-- Right content panel -->
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div style="height:11px;width:55%;background:var(--bg-inset);border-radius:2px;"></div>
+            <div style="height:36px;background:var(--bg-inset);border-radius:3px;"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="height:28px;background:var(--bg-inset);border-radius:3px;"></div>
+              <div style="height:28px;background:#8fa4c4;opacity:0.4;border-radius:3px;"></div>
+            </div>
+            <div style="height:7px;width:80%;background:var(--border-light);border-radius:2px;"></div>
+            <div style="height:7px;width:60%;background:var(--border-light);border-radius:2px;"></div>
+            <div style="height:28px;background:var(--green);opacity:0.5;border-radius:3px;margin-top:4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-label-row">
+          <span class="diagram-tag">Component Library</span>
+          <span style="margin-left:10px;font-size:0.75rem;font-weight:500;color:var(--text-muted);">Fee breakdown module &amp; rate lock indicator</span>
+        </div>
+        <div class="diagram-card-inner">
+          <div class="component-card">
+            <div class="component-swatches">
+              <!-- Fee breakdown component visual -->
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;">
+                <div style="height:8px;width:50%;background:var(--bg-inset);border-radius:2px;margin-bottom:8px;"></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                  <div style="height:7px;width:45%;background:var(--border-light);border-radius:2px;"></div>
+                  <div style="height:7px;width:20%;background:var(--border-light);border-radius:2px;"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                  <div style="height:7px;width:40%;background:var(--border-light);border-radius:2px;"></div>
+                  <div style="height:7px;width:22%;background:var(--border-light);border-radius:2px;"></div>
+                </div>
+                <div style="border-top:1px solid var(--border-light);padding-top:7px;display:flex;justify-content:space-between;">
+                  <div style="height:9px;width:30%;background:var(--bg-inset);border-radius:2px;"></div>
+                  <div style="height:9px;width:25%;background:var(--green);opacity:0.5;border-radius:2px;"></div>
+                </div>
+              </div>
+              <!-- Rate lock indicator -->
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;display:flex;align-items:center;gap:10px;margin-top:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--slate);opacity:0.5;flex-shrink:0;"></div>
+                <div style="flex:1;">
+                  <div style="height:8px;width:80%;background:var(--bg-inset);border-radius:2px;margin-bottom:5px;"></div>
+                  <div style="height:7px;width:50%;background:var(--border-light);border-radius:2px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="component-text-block">
+              <div class="comp-title">The Atomic Approach</div>
+              <p class="comp-body">Design tokens are defined at the root level to ensure seamless implementation for engineers. Every button state, spacing increment, and colour hex is documented. The fee breakdown module and rate lock indicator were added to the shared component library so they can be reused across all transfer types.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="cs-rule">
+
+      <!-- Research standardisation section -->
+      <h3 class="cs-subhead">Research standardisation and Design hand-off upgrade</h3>
+      <div class="prose">
+        <p>A secondary outcome of this project was the establishment of a repeatable research and handoff process. Previously, each design project had its own ad-hoc documentation approach. I used this project to pilot a standardised handoff package that included:</p>
+        <ul>
+          <li>An annotated Figma file with edge cases documented inline for each component.</li>
+          <li>A research summary template capturing methodology, key findings, and design implications in a format engineers and PMs could scan in under 5 minutes.</li>
+          <li>A QA checklist linked directly to the acceptance criteria in Jira, covering accessibility, responsiveness, and functional parity with the design spec.</li>
+        </ul>
+        <p>The process was adopted by two other product teams within the quarter following this project's handoff.</p>
+      </div>
+
+      <div class="diagram-card" style="margin-top:24px;">
+        <div class="diagram-label-row"><span class="diagram-tag">Transfer Details Page — Before &amp; After</span></div>
+        <div style="background:#fff;border-radius:4px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-ui);margin-bottom:10px;">Before</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="height:9px;background:var(--bg-inset);border-radius:2px;width:80%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:100%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:90%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:95%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:75%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:100%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:85%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:70%;"></div>
+              <div style="height:24px;background:var(--bg-inset);border-radius:3px;margin-top:6px;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">After</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="height:9px;background:var(--bg-inset);border-radius:2px;width:60%;"></div>
+              <div style="height:30px;background:var(--bg-inset);border-radius:3px;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:90%;"></div>
+              <div style="height:7px;background:var(--border-light);border-radius:2px;width:70%;"></div>
+              <div style="border:1px solid var(--border);border-radius:3px;padding:8px;display:flex;flex-direction:column;gap:4px;margin-top:4px;">
+                <div style="height:6px;background:var(--border-light);border-radius:2px;width:100%;"></div>
+                <div style="height:6px;background:var(--border-light);border-radius:2px;width:80%;"></div>
+                <div style="height:6px;background:var(--border-light);border-radius:2px;width:90%;"></div>
+              </div>
+              <div style="height:22px;background:var(--green);opacity:0.5;border-radius:3px;margin-top:4px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 04 VALIDATION ═══ -->
+    <section class="cs-section" id="s-validation">
+      <span class="cs-step-num" aria-hidden="true">04</span>
+      <h2 class="cs-step-title">Validation &amp; Testing</h2>
+      <p class="cs-step-intro">Proving the hypothesis. We conduct usability testing to find where the design fails so we can fix it before launch.</p>
+
+      <div class="metrics-card">
+        <div class="metric-cell">
+          <span class="metric-tag">Usability Score</span>
+          <span class="metric-value">92%</span>
+          <span class="metric-label">Task Success Rate</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-tag">Time on Task</span>
+          <span class="metric-value">−14s</span>
+          <span class="metric-label">Efficiency Gain</span>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card">
+          <span class="insight-num">+28%</span>
+          <span class="insight-label">Increase in completed transfers — primary success metric</span>
+        </div>
+        <div class="insight-card">
+          <span class="insight-num">−48%</span>
+          <span class="insight-label">Reduction in mid-flow abandonment at confirmation screen</span>
+        </div>
+        <div class="insight-card">
+          <span class="insight-num">2</span>
+          <span class="insight-label">Other product teams adopted the standardised handoff process</span>
+        </div>
+      </div>
+
+      <blockquote class="quote-callout" style="margin-top:28px;">
+        <span class="quote-callout-label">The Feedback Loop</span>
+        <p class="quote-callout-text">Testing isn't a final hurdle; it's a recurring check-in. We prototype, test, and break things early to avoid expensive revisions during development. Each of the three problem areas shipped with its own A/B test to isolate impact before full rollout.</p>
+      </blockquote>
+
+      <div class="prose" style="margin-top:28px;">
+        <p>The modular release approach proved its value in the validation phase: because each change was shipped independently, we could attribute +9% of the overall improvement to fee transparency, +12% to the rate consistency fix, and +7% to the confirmation screen restructure.</p>
+        <p>These numbers became the foundation for the team's next quarterly roadmap — each future initiative now goes through the same friction-mapping and modular prioritisation process established in this project.</p>
+      </div>
+    </section>
+
+  </main>
+</div><!-- /cs-body -->
+
+<!-- NEXT PROJECT -->
+<div class="next-project-bar">
+  <div>
+    <span class="next-label">Next Project</span>
+    <div class="next-title">Aura E-Commerce App</div>
+  </div>
+  <a href="case-aura.html" class="btn">View Case Study →</a>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-logo">bc</span>
+  <a href="case-aura.html" class="cs-footer-next">Next Section →</a>
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.cs-section');
+const tocItems = document.querySelectorAll('.cs-toc-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
+    }
+  });
+}, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
